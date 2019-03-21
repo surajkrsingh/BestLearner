@@ -1,0 +1,349 @@
+.site-header {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.site-title {
+	margin-bottom: 5px;
+}
+
+.site-description {
+	margin-bottom: 0;
+}
+
+//-----------Life style---------------//
+html,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+div {
+	margin: 0;
+}
+
+@font-face {
+	font-family: "Notera_PersonalUseOnly";
+	src: url('../fonts/Notera_PersonalUseOnly.ttf');
+}
+
+.header {
+	background-color: #fff;
+	border-bottom: 1px solid #e3e8e4;
+	font-family: 'Raleway Semi-Bold';
+	height: 150px;
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		height: auto;
+	}
+}
+
+.header__top-header {
+	background-color: #fff;
+	width: 100%;
+	height: 100px;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #c0c4c0ea;
+	padding: 0 30px 0 30px;
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		height: auto;
+		padding: 0;
+	}
+}
+
+.top-header__link {
+	display: flex;
+	justify-content: flex-end;
+	width: 30%;
+
+	a {
+		font-weight: 600;
+		margin-left: 10px;
+	}
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		width: 100%;
+		height: 100%;
+		padding: 5px;
+		justify-content: space-evenly;
+		border-top: 2px solid #b0b3b1;
+	}
+}
+
+.header__bottom-header {
+	display: flex;
+	justify-content: space-evenly;
+	min-height: 50px;
+	background-color: #009900;
+	//background-image: linear-gradient(45deg, #138808 33%, #ffffff 33%, #ffffff 66%, #ff9933 66% );
+	align-items: center;
+	padding: 0 30px 0 30px;
+	box-shadow: 0 0.01rem 0.250rem 0px rgba(92, 92, 92, 0.705);
+	@media (min-width: 320px) and (max-width: 600px) {	
+		height: 0;
+		min-height: 0;
+		visibility: hidden;
+	}
+
+}
+  
+.header__bottom-header.active {
+	top: 0px;
+	padding: 0;
+	min-height: 50px;
+	height: auto;
+	visibility: visible;	
+}
+
+.sticky-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.top-header__search {
+	display: flex;
+	width: 40%;
+	height: 40px;
+	border: 1px solid #c0c4c0ea;
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		width: 98%;
+		margin: 10px;
+	}
+}
+
+.top-header__search__box {
+	border: none !important;
+}
+
+.top-header__search__button {
+	background: none !important;
+	font-size: 20px;
+	border: none !important;
+	color: #009900;
+	width: 20%;
+	border-left: solid 1px #c0c4c0ea !important;
+}
+
+.logo-container {
+	width: 30%;
+	text-align: center;
+
+	@media (min-width: 320px) and (max-width: 1024px) {
+		text-align: center;
+		padding: 10px 10px 10px 0;
+		width: 100%;
+		border-bottom: solid 2px #c0c4c0ea;
+	}
+}
+
+.logo {
+	font-size: 50px;
+	font-family: "Notera_PersonalUseOnly";
+
+	@media (min-width: 320px) and (max-width: 600px) {
+		font-size: 40px;
+	}
+}
+
+.logo-slogan {
+	font-size: 12px;
+	color: #009900;
+
+	&::after {
+		content: '';
+		width: 30px;
+		height: 2px;
+		display: inline-block;
+		background-color: #90a3ac;
+		margin: 0 2px;
+	}
+
+	&::before {
+		content: '';
+		width: 30px;
+		height: 2px;
+		display: inline-block;
+		background-color: #90a3ac;
+		margin: 0 2px;
+	}
+}
+
+.bottom-header__nav {
+	align-items: center;
+	display: flex;
+	width: 60%;
+	font-size: 12px;
+	flex-direction: column;
+
+	@media (min-width: 320px) and (max-width: 600px) {
+		font-size: 12px;
+		width: 100%;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			flex-direction: column;
+			width: 100%;
+
+			li {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				height: 40px;
+				align-items: center;
+				border-bottom: solid 1px #b0b3b1;
+				background-color: #009900;
+
+				&:hover {
+					background-color: #009900;
+				}
+			}
+		}
+
+		a {
+			color: #fff;
+
+			&:hover {
+				color: #424242;
+			}
+		}
+	}
+
+	@media (min-width: 600px) and (max-width: 1024px) {
+		font-size: 12px;
+		width: 100%;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+
+			li {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				height: 50px;
+				align-items: center;
+				border-bottom: solid 1px #b0b3b1;
+				background-color: #009900;
+
+				&:hover {
+					background-color: #009900;
+				}
+			}
+		}
+
+		a {
+			color: #fff;
+
+			&:hover {
+				color: #424242;
+			}
+		}
+	}
+
+}
+
+.button--border {
+	border: solid 1px #009900;
+	color: #009900;
+	width: 80px;
+}
+
+.deactive {
+	display: none;
+
+	@media (min-width: 320px) and (max-width: 600px) {
+		display: block;
+	}
+}
+
+/*
+	popup scss.
+*/
+.model {
+	visibility: hidden;
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background:rgba(#90a3ac,0.5);
+}
+.model-box {
+	background: #90a3ac;
+	width: 40%;
+	height: 55%;
+	transform: translate(75%, 40%);
+	box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
+	@media (min-width: 320px) and (max-width: 600px) {
+		width: 100%;
+		transform: translate(0%, 60%);
+		height: auto;
+	}
+}
+
+.model.active {
+	/*displays pop-up when "active" class is present*/
+	visibility: visible;
+	text-align: center;
+}
+
+.model-box__content {
+	padding: 10px;
+	color: #fff;
+
+	p {
+		margin-top: 10px;
+	}
+}
+
+.model-box__content__form {
+	padding: 10px 50px;
+
+	textarea,
+	text,
+	select,
+	button {
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	textarea {
+		height: 80px;
+	}
+
+	select,
+	text,
+	button {
+		height: 40px;
+	}
+
+	textarea,
+	input,
+	select {
+		color: #fff !important;
+		border: inset 1px #5a717c;
+		background: #6a7d86;
+	}
+}
+
+.close-icon {
+	background: #ffffff;
+	color: #f00;
+	border: inset 1px #fff;
+	padding: 5px 10px;
+	float: right;
+}
