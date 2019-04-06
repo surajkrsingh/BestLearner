@@ -9,30 +9,27 @@
 <!--Popular post-->
 <div class="box">
 	<div class="box-contents">
-		<h4>RELATED POST</h4>
+		<h4 class="box-contents__title">RELATED POST</h4>
 		<hr class="hr-line--green"/>
 		<?php
-		global $post;
-		$categories        = get_the_category();
-		$categories_option = array();
-		foreach ( $categories as $category ) {
-			$categories_option[] = $category->slug;
-		}
-
-		$args = array(
-			'post__not_in'  => array( get_the_ID() ),
-			'numberposts'   => 10,
-			'category_slug' => $categories_option,
-		);
 		// Here need the filter post so avoid phpcs.
-		$posts = get_posts( $args ); //phpcs:ignore 
+		$old_post_id = $post->ID;
+		$posts       = get_posts(
+			array(
+				'category__in' => wp_get_post_categories( $old_post_id ),
+				'numberposts'  => 5,
+			)
+		);
 
-		if ( 1 > count( $posts ) ) {
+		if ( 1 >= count( $posts ) ) {
 			esc_html_e( 'Sorry no more post for this category.' );
 		} else {
 			foreach ( $posts as $post ) { //phpcs:ignore 
 				setup_postdata( $post );
-				$new_post_id   = get_the_ID();
+				$new_post_id = get_the_ID();
+				if ( $old_post_id === $new_post_id ) {
+					continue;
+				}
 				$new_post_date = get_the_date();
 				$new_post_date = date( 'F d Y', strtotime( $new_post_date ) );
 				?>
@@ -48,6 +45,7 @@
 				</div>
 				<?php
 			}
+			wp_reset_postdata();
 		}
 		?>
 	</div>

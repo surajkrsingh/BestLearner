@@ -34,4 +34,26 @@
 
 .lifestyle-pagination {
 	text-align: center;
+	.page-numbers {
+		border: solid 1px #e7e4e4;
+		background-color: #fff;
+		padding: 5px 10px;
+	}
+
+	.current {
+		background-color: #33ba36;
+		color: #fff;
+	}
+	@media (min-width: 320px) and (max-width: 1024px) {
+		margin-bottom: 30px;
+	}
+}
+
+.round-count{
+	float: right;
+	margin-top:-20px;
+	background:#e65100;
+	padding: 5px 10px;
+	color: #fff;
+	border-radius: 50%;
 }

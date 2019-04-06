@@ -22,7 +22,6 @@ if ( is_home() ) {
 	<?php
 	$recent_posts = wp_get_recent_posts(
 		array(
-			'numberposts' => 10,
 			'post_status' => 'publish',
 		)
 	);
@@ -34,9 +33,10 @@ if ( is_home() ) {
 			the_post();
 			get_template_part( 'template-parts/content', 'recent-post' );
 		}
+		wp_reset_postdata();
+		lifestyle_pagination();
 	};
 	?>
-	<?php wp_reset_postdata(); ?>
 	</div>
 <?php
 get_sidebar( 'right' );

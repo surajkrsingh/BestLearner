@@ -130,8 +130,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	background: $color__background-button;
-	background-image: linear-gradient(-180deg, #009900 0%, #009900 90%);
-	border-radius: $border-radius;
+	background-image: linear-gradient(-180deg, #33ba36 0%, #33ba36 90%);
 	border: 1px solid $color__border-button;
 	color: #fff;
 	display: inline-block;
@@ -143,15 +142,13 @@ input[type="submit"] {
 	vertical-align: middle;
 
 	&:hover {
-		background: $color__background-button-hover;
-		background-image: linear-gradient(-180deg, #009900 0%, #027502 90%);
-		border-color: $color__border-button-hover;
+		background-image: linear-gradient(-180deg, #33ba36 0%, #33ba36 90%);
 	}
 
 	&:active,
 	&:focus {
 		background: $color__background-button-hover;
-		background-image: linear-gradient(-180deg, #009900 0%, #016601 90%);
+		background-image: linear-gradient(-180deg, #33ba36 0%, #33ba36 90%);
 		border-color: $color__border-button-hover;
 	}
 }
@@ -169,7 +166,6 @@ input[type="tel"],
 textarea {
 	border: solid 1px $color__border-light;
 	color: $color__text-input;
-	border-radius: $border-radius;
 	line-height: $font__line-height-body;
 	width: 100%;
 	margin: 5px 0 10px 0;

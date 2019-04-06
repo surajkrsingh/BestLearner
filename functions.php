@@ -24,10 +24,16 @@ require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-lifestyle.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/custom-functions.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/template-tags.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/template-tags.php';
+require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-top-popular-post.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-wp-custom-widget-recent-posts.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-wp-custom-widget-categories.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-wp-custom-widget-about-me.php';
 require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-lifestyle-slider.php';
+require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-bestlearner-info.php';
+require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-top-author.php';
+require_once LIFESTYLE_TEMP_DIR . '/inc/classes/class-top-visited-post.php';
+
+
 
 $lifestyle = new Lifestyle();
 
@@ -50,5 +56,8 @@ function wp_register_custom_widget() {
 	register_widget( 'WP_Custom_Widget_Categories' );
 	register_widget( 'WP_Custom_Widget_Recent_Posts' );
 	register_widget( 'WP_Custom_Widget_About_Me' );
+	register_widget( 'Top_Popular_Post' );
+	register_widget( 'Top_Visited_Post' );
+	register_widget( 'Top_Author' );
 }
 add_action( 'widgets_init', 'Lifestyle\wp_register_custom_widget' );

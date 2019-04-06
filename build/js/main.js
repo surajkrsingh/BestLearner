@@ -86,6 +86,72 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./js/components/bestLearner.js":
+/*!**************************************!*\
+  !*** ./js/components/bestLearner.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * bestLearner JS.
+ *
+ * @type {Object}
+ */
+var bestLearner = {
+  /**
+   * Initialize.
+   *
+   * @return {void}
+   */
+  init: function init() {
+    this.setProps();
+  },
+
+  /**
+   * Set properties and selectors.
+   *
+   * @return {void}
+   */
+  setProps: function setProps() {
+    // Subscribe form validation.
+    jQuery('#bl_subscribe_submit_button').click(function () {
+      var userName = jQuery('#bl_subscribe_name').val();
+      var userEmail = jQuery('#bl_subscribe_email').val();
+      var regex = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+      if ('' === userName || '' === userEmail || !regex.test(userEmail)) {
+        alert('Please enter correct info');
+        return false;
+      }
+
+      return true;
+    }); // Suggest an article form validation.
+
+    jQuery('#save_suggested_article').click(function () {
+      var articleTitle = jQuery('#bl_article_title').val();
+      var articleContents = jQuery('#bl_article_description').val();
+      var articleCategory = jQuery('#bl_article_category').val();
+
+      var correctCaptcha = function correctCaptcha(response) {
+        alert(response);
+      };
+
+      if ('' === articleTitle || '' === articleContents || '' === articleCategory) {
+        alert('Please enter correct info');
+        return false;
+      }
+
+      return true;
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (bestLearner);
+
+/***/ }),
+
 /***/ "./js/components/common.js":
 /*!*********************************!*\
   !*** ./js/components/common.js ***!
@@ -108,16 +174,6 @@ var common = {
    */
   init: function init() {
     this.setProps();
-    this.bindEvents();
-  },
-
-  /**
-   * Bind events.
-   *
-   * @return {void}
-   */
-  bindEvents: function bindEvents() {
-    this.backToTopButton.on('click', this.goBackToTop);
   },
 
   /**
@@ -126,15 +182,27 @@ var common = {
    * @return {void}
    */
   setProps: function setProps() {
-    this.backToTopButton = $('#lifestyle-back-to-top');
-    this.bodyHtml = $('body, html'); //Header sticky
+    //Back to top
+    var backToTopButton = $('.bestlearner-back-to-top');
+    $(window).scroll(function () {
+      if (100 < $(this).scrollTop()) {
+        backToTopButton.fadeIn();
+      } else {
+        backToTopButton.fadeOut();
+      }
+    });
+    backToTopButton.click(function () {
+      $('body, html').animate({
+        scrollTop: 0
+      }, 500);
+    }); //Header sticky
 
     $(function () {
       createSticky($('.header__bottom-header'));
     });
 
     function createSticky(sticky) {
-      if ('undefined' !== typeof sticky) {
+      if ('undefined' !== typeof sticky && 600 <= $(window).width()) {
         var pos = sticky.offset().top,
             win = $(window);
         win.on('scroll', function () {
@@ -161,19 +229,14 @@ var common = {
       }
 
       $(this).data('clicks', !clicks);
-    });
-  },
+    }); //Toggle the menu item.
 
-  /**
-   * Handles back to top.
-   *
-   * @return {void}
-   */
-  goBackToTop: function goBackToTop() {
-    var animationDuration = 600;
-    this.bodyHtml.animate({
-      scrollTop: 0
-    }, animationDuration);
+    $('ul.menu-list li.menu-list__item a').each(function (i) {
+      if (window.location.href.includes($('ul.menu-list li.menu-list__item a')[i].href)) {
+        $('ul.menu-list li.menu-list__item a').removeClass('menu-item-active');
+        $(this).addClass('menu-item-active');
+      }
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (common);
@@ -230,7 +293,7 @@ var WebFont = {
 /*!********************************!*\
   !*** ./js/components/index.js ***!
   \********************************/
-/*! exports provided: WebFont, common, slider */
+/*! exports provided: WebFont, common, bestLearner, slider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -241,14 +304,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./js/components/common.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "common", function() { return _common__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./js/components/slider.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "slider", function() { return _slider__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _bestLearner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bestLearner */ "./js/components/bestLearner.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bestLearner", function() { return _bestLearner__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./slider */ "./js/components/slider.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "slider", function() { return _slider__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
 /**
  * lifestyle component.
  *
  * @package lifestyle
  */
+
 
 
 
@@ -414,6 +481,7 @@ window.$ = window.$ || jQuery; // Initialize common scripts.
 
 _components__WEBPACK_IMPORTED_MODULE_1__["WebFont"].init();
 _components__WEBPACK_IMPORTED_MODULE_1__["common"].init();
+_components__WEBPACK_IMPORTED_MODULE_1__["bestLearner"].init();
 
 /***/ }),
 

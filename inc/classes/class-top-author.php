@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget API: WP_Widget_Recent_Posts class
+ * Widget API: Top_Author class
  *
  * @package WordPress
  * @subpackage Widgets
@@ -8,31 +8,31 @@
  */
 
 /**
- * Core class used to implement a Recent Posts widget.
+ * Core class used to implement a Top Author widget.
  *
  * @since 2.8.0
  *
  * @see WP_Widget
  */
-class WP_Custom_Widget_Recent_Posts extends WP_Widget {
+class Top_Author extends WP_Widget {
 
 	/**
-	 * Sets up a new Recent Posts widget instance.
+	 * Sets up a new Top Authors widget instance.
 	 *
 	 * @since 2.8.0
 	 */
 	public function __construct() {
 		$widget_ops = array(
 			'classname'                   => 'widget_recent_entries',
-			'description'                 => __( 'Your site&#8217;s most recent Posts.', 'lifestyle' ),
+			'description'                 => __( 'Your site&#8217;s most top author.', 'lifestyle' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'custom-recent-posts', __( 'Custom Recent Posts', 'lifestyle' ), $widget_ops );
+		parent::__construct( 'top-Author', __( 'Top Author', 'lifestyle' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_entries';
 	}
 
 	/**
-	 * Outputs the content for the current Recent Posts widget instance.
+	 * Outputs the content for the current top author widget instance.
 	 *
 	 * @since 2.8.0
 	 *
@@ -57,30 +57,31 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
 		/**
-		 * Filters the arguments for the Recent Posts widget.
+		 * Filters the arguments for the top author widget.
 		 *
 		 * @since 3.4.0
 		 * @since 4.9.0 Added the `$instance` parameter.
 		 *
-		 * @see WP_Query::get_posts()
+		 * @see WP_Query::get_users()
 		 *
 		 * @param array $args     An array of arguments used to retrieve the recent posts.
 		 * @param array $instance Array of settings for the current widget.
 		 */
-		$r = new WP_Query(
-			apply_filters(
-				'widget_posts_args',
-				array(
-					'posts_per_page'      => $number,
-					'no_found_rows'       => true,
-					'post_status'         => 'publish',
-					'ignore_sticky_posts' => true,
+		// Display pic of contributors.
+		$users = get_users(
+			array(
+				'fields'  => array(
+					'display_name',
+					'ID',
+					'user_url',
 				),
-				$instance
+				'orderby' => 'post_count',
+				'number'  => 5,
+				'order'   => 'DESC',
 			)
 		);
 
-		if ( ! $r->have_posts() ) {
+		if ( ! is_array( $users ) || empty( $users ) ) {
 			return;
 		}
 
@@ -93,29 +94,33 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<?php foreach ( $r->posts as $recent_post ) : ?>
-			<?php
-				$post_title = get_the_title( $recent_post->ID );
-				$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)' );
-			?>
-			<div class="popular-post">
-				<div class="popular-post-contents">
-					<a href="<?php the_permalink( $recent_post->ID ); ?>"><?php echo esc_html( $title ); ?></a>
-					<?php if ( $show_date ) : ?>
-						<span class="popular-post-time line-break"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
-					<?php endif; ?>
-				</div>
+		<?php
+		foreach ( $users as $current_user ) :
+			if ( ! empty( count_user_posts( $current_user->ID ) ) ) {
+				?>
+			<div class="author-item">
+				<figure>
+					<?php
+					printf( '<a href="%3$s"><img src="%1$s" title="%2$s" alt="%2$s" class="author-item-dp"/></a>', esc_url( get_avatar_url( $current_user->ID ) ), esc_html( $current_user->display_name ), esc_url( get_author_posts_url( $current_user->ID ) ) );
+					?>
+					<span class="author-contents">
+						<a href="<?php echo esc_url( get_author_posts_url( $current_user->ID ) ); ?>"><?php echo esc_html( $current_user->display_name ); ?></a>
+					</span>
+					<span class="float-right">
+						( <?php echo esc_html( count_user_posts( $current_user->ID ) ); ?> )
+					</span>
+				</figure>
 			</div>
 			<hr/>
-		<?php endforeach; ?>
-
-		<?php
+				<?php
+			}
+		endforeach;
 		echo $args['after_widget']; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';
 	}
 
 	/**
-	 * Handles updating the settings for the current Recent Posts widget instance.
+	 * Handles updating the settings for the current Top Author widget instance.
 	 *
 	 * @since 2.8.0
 	 *
@@ -133,7 +138,7 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 	}
 
 	/**
-	 * Outputs the settings form for the Recent Posts widget.
+	 * Outputs the settings form for the Top Authors widget.
 	 *
 	 * @since 2.8.0
 	 *

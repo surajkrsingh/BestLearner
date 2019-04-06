@@ -103,7 +103,17 @@ class WP_Custom_Widget_About_Me extends WP_Widget {
 		}
 
 		// Display pic of contributors.
-		$users = get_users( array( 'fields' => array( 'display_name', 'ID', 'user_url' ) ) );
+		$users = get_users(
+			array(
+				'fields'  => array(
+					'display_name',
+					'ID',
+					'user_url',
+				),
+				'orderby' => 'post_count',
+				'order'   => 'DESC',
+			)
+		);
 
 		if ( ! is_array( $users ) || empty( $users ) ) {
 			return;
@@ -112,7 +122,9 @@ class WP_Custom_Widget_About_Me extends WP_Widget {
 		<figure class="figure figure-contributors">
 			<?php
 			foreach ( $users as $user ) {
-				printf( '<a href="%3$s"><img src="%1$s" title="%2$s" alt="%2$s"/></a>', esc_url( get_avatar_url( $user->ID ) ), esc_html( $user->display_name ), esc_url( $user->user_url ) );
+				if ( ! empty( count_user_posts( $user->ID ) ) ) {
+					printf( '<a href="%3$s"><img src="%1$s" title="%2$s" alt="%2$s"/></a>', esc_url( get_avatar_url( $user->ID ) ), esc_html( $user->display_name ), esc_url( $user->user_url ) );
+				}
 			}
 			?>
 		</figure>

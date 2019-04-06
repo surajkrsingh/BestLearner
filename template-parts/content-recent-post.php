@@ -19,7 +19,19 @@ $post_tags              = get_the_tags();
 ?>
 <div class="box box--box-buttom-border box-round">
 	<div class="box-contents">
-		<span class="box-contents__title line-break text text--uppercase"><a href="<?php echo esc_attr( get_permalink( $new_post_id ) ); ?>"><?php the_title(); ?></a></span> 		
+		<?php if ( is_home() ) : ?>
+		<p class="post-feature-type">
+			<?php
+				$categories = get_the_category( $new_post_id );
+				printf(
+					'<a href="%1$s">%2$s</a>',
+					esc_url( get_category_link( $categories[0]->cat_ID ) ),
+					esc_html( $categories[0]->name )
+				);
+			?>
+		</p>
+		<?php endif ?>
+		<span class="box-contents__title line-break text text--uppercase"><a href="<?php echo esc_attr( get_permalink( $new_post_id ) ); ?>"><?php the_title(); ?></a></span>
 		<span class="box-contents__author  text text--uppercase">by <span class="author-name green"> <?php echo esc_html( the_author_posts_link() ); ?> </span><?php echo esc_html( $new_post_date ); ?></span>
 		<hr class="hr-line--green"/>
 		<div class="box-contents__description">
@@ -28,7 +40,7 @@ $post_tags              = get_the_tags();
 				echo wpautop(
 					wp_trim_words(
 						get_the_content(),
-						55,
+						40,
 						$read_more
 					)
 				);
@@ -44,7 +56,12 @@ $post_tags              = get_the_tags();
 			}
 			?>
 			</ul>
-			<span class="reader-count text--uppercase" title="Reader count"> 100 </span>
+			<span class="reader-count text--uppercase" title="Reader count">
+			<?php
+				$post_count_meta = get_post_meta( $new_post_id, 'post_count_meta' );
+				echo esc_html( ( isset( $post_count_meta[0]['visit_count'] ) ? $post_count_meta[0]['visit_count'] : '0' ) );
+			?>
+			</span>
 		</div>
 	</div>
 </div>

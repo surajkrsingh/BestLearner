@@ -7,7 +7,10 @@
  * @package lifestyle
  */
 
-?><!DOCTYPE html>
+remove_action( 'wp_head', '_admin_bar_bump_cb' );
+add_filter( 'show_admin_bar', '__return_false' );
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -19,7 +22,7 @@
 <body <?php body_class(); ?>>
 	<?php get_template_part( 'template-parts/content', 'suggest-article' ); ?>
 	<header class="header">
-			<section class="header__top-header"> 
+			<section class="header__top-header">
 				<div class="logo-container column">
 					<?php
 					$title_class = false;
@@ -55,15 +58,26 @@
 					endif;
 					?>
 				</div>
-				<div class="top-header__search">
-					<input type="text" placeholder="Find from here.." name="header-search" class="top-header__search__box" />
-					<button type="button" class="top-header__search__button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-
+				<form role="search" method="get" class="top-header__search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<input type="text" placeholder="Serach from here.." name="s" class="top-header__search__box" />
+					<button type="submit" class="top-header__search__button"><i class="fa fa-search" aria-hidden="true"></i></button>
+				</form>
 				<div class="top-header__link">
 					<a href="javascript:void(0);" id="menu-open" class="button button--border deactive"><i class="fa fa-bars"></i></a>
+					<a href="<?php echo esc_url( get_site_url() ) . '/about-us/'; ?>" class="button button--green">About us</a>
 					<a href="javascript:void(0);" class="button button--green open">Suggest an article</a>
-					<a href="#" class="button button--green">About us</a>
+					<?php
+					if ( is_user_logged_in() ) :
+						$current_user = wp_get_current_user();
+						?>
+						<a href="javascript:void(0);" class="user-profile" title="<?php echo esc_html( $current_user->display_name ); ?>">
+							<?php
+								printf( '<img src="%s" class="user-icon">', esc_url( get_avatar_url( $current_user->ID ) ) );
+								printf( '<div class="user-name">%s</div>', esc_html( $current_user->display_name ) );
+								wp_reset_postdata();
+							?>
+						</a>
+					<?php endif ?>
 				</div>
 			</section>
 			<section class="header__bottom-header">
@@ -80,7 +94,7 @@
 						)
 					);
 					?>
-				</nav>	
+				</nav>
 			</section>
 </header>
 <main class="main">

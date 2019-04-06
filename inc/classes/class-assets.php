@@ -97,9 +97,11 @@ class Assets extends Base {
 		wp_register_style( 'lifestyle-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array(), self::asset_version() );
 		wp_register_style( 'lifestyle-google-font', 'https://fonts.googleapis.com/css?family=Raleway:600', array(), self::asset_version() );
 		wp_enqueue_script( 'lifestyle-main' );
-
 		wp_enqueue_style( 'lifestyle-font-awesome' );
 		wp_enqueue_style( 'lifestyle-google-font' );
+
+		wp_register_script( 'google-recaptch-script', 'https://www.google.com/recaptcha/api.js', null, '1.0.0', true );
+		wp_enqueue_script( 'google-recaptch-script' );
 
 		if ( is_home() ) {
 			wp_enqueue_script( 'lifestyle-home' );

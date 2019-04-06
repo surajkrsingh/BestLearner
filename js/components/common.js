@@ -12,16 +12,6 @@ const common = {
 	 */
 	init() {
 		this.setProps();
-		this.bindEvents();
-	},
-
-	/**
-	 * Bind events.
-	 *
-	 * @return {void}
-	 */
-	bindEvents() {
-		this.backToTopButton.on( 'click', this.goBackToTop );
 	},
 
 	/**
@@ -30,8 +20,20 @@ const common = {
 	 * @return {void}
 	 */
 	setProps() {
-		this.backToTopButton = $( '#lifestyle-back-to-top' );
-		this.bodyHtml = $( 'body, html' );
+
+		//Back to top
+		const backToTopButton = $( '.bestlearner-back-to-top' );
+		$( window ).scroll( function() {
+			if ( 100 < $( this ).scrollTop() ) {
+				backToTopButton.fadeIn();
+			} else {
+				backToTopButton.fadeOut();
+			}
+		} );
+
+		backToTopButton.click( function() {
+			$( 'body, html' ).animate( { scrollTop: 0 }, 500 );
+		} );
 
 		//Header sticky
 		$( function() {
@@ -39,7 +41,7 @@ const common = {
 		} );
 
 		function createSticky( sticky ) {
-			if ( 'undefined'  !==  typeof sticky  ) {
+			if ( 'undefined'  !==  typeof sticky  && 600 <= $( window ).width()  ) {
 				let	pos = sticky.offset().top,
 					win = $( window );
 				win.on( 'scroll', function() {
@@ -69,19 +71,16 @@ const common = {
 
 			$( this ).data( 'clicks', ! clicks );
 		} );
-	},
 
-	/**
-	 * Handles back to top.
-	 *
-	 * @return {void}
-	 */
-	goBackToTop() {
-		const animationDuration = 600;
+		//Toggle the menu item.
 
-		this.bodyHtml.animate( {
-			scrollTop: 0
-		}, animationDuration );
+		$( 'ul.menu-list li.menu-list__item a' ).each( function( i ) {
+			if ( window.location.href.includes( $( 'ul.menu-list li.menu-list__item a' )[i].href ) ) {
+				$( 'ul.menu-list li.menu-list__item a' ).removeClass( 'menu-item-active' );
+				$( this ).addClass( 'menu-item-active' );
+			}
+
+		} );
 	}
 
 };

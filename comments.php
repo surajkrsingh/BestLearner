@@ -139,7 +139,7 @@ function lifestyle_post_comment( $comment, $args, $depth ) {
 		<!-- Avtar for commentor. -->
 		<figure class="figure">
 			<a href="<?php get_comment_author_link(); ?>">
-				<img src="<?php echo esc_url( get_avatar_url( $comment ) ); ?>" class=" popular-post__img" />
+				<img src="<?php echo esc_url( get_avatar_url( $comment ) ); ?>" class="comment-post-user" />
 			</a>
 		</figure>
 

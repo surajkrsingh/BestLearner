@@ -5,11 +5,17 @@
  * @package lifestyle
  */
 
+// Remove WordPress default header after login.
+function remove_admin_login_header() {
+	remove_action( 'wp_head', '_admin_bar_bump_cb' );
+}
+add_action( 'get_header', 'remove_admin_login_header' );
+
 get_header();
 ?>
 
-<section class="section ">
-	<div class="box-container">
+<section class="section">
+	<div class="box-container" style="margin: auto;">
 		<div class="box box--large">
 			<div class="box-contents">
 			<header class="page-header">

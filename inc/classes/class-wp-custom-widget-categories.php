@@ -108,7 +108,13 @@ class WP_Custom_Widget_Categories extends WP_Widget {
 			?>
 		<ul class="categories-items">
 			<?php
-			$cat_args['title_li'] = '';
+			$cat_args = array(
+				'title_li'   => '',
+				'show_count' => true,
+				'number'     => 5,
+				'order'      => 'DESC',
+				'orderby'    => 'count',
+			);
 
 			/**
 			 * Filters the arguments for the Categories widget.

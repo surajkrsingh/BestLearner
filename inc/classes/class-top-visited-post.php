@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget API: WP_Widget_Recent_Posts class
+ * Widget API: Top_Visited_Post class
  *
  * @package WordPress
  * @subpackage Widgets
@@ -8,44 +8,44 @@
  */
 
 /**
- * Core class used to implement a Recent Posts widget.
+ * Core class used to implement a Top Visited Post widget.
  *
  * @since 2.8.0
  *
  * @see WP_Widget
  */
-class WP_Custom_Widget_Recent_Posts extends WP_Widget {
+class Top_Visited_Post extends WP_Widget {
 
 	/**
-	 * Sets up a new Recent Posts widget instance.
+	 * Sets up a  most visited Posts widget instance.
 	 *
 	 * @since 2.8.0
 	 */
 	public function __construct() {
 		$widget_ops = array(
 			'classname'                   => 'widget_recent_entries',
-			'description'                 => __( 'Your site&#8217;s most recent Posts.', 'lifestyle' ),
+			'description'                 => __( 'Your site&#8217;s most visited Posts.', 'lifestyle' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'custom-recent-posts', __( 'Custom Recent Posts', 'lifestyle' ), $widget_ops );
+		parent::__construct( 'top-visited-posts', __( 'Top Visited Posts', 'lifestyle' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_entries';
 	}
 
 	/**
-	 * Outputs the content for the current Recent Posts widget instance.
+	 * Outputs the content for the Top Visited Post widget instance.
 	 *
 	 * @since 2.8.0
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
-	 * @param array $instance Settings for the current Recent Posts widget instance.
+	 * @param array $instance Settings for the most visited Posts widget instance.
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['widget_id'] ) ) {
 			$args['widget_id'] = $this->id;
 		}
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Top Visited Post' );
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -57,26 +57,21 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
 		/**
-		 * Filters the arguments for the Recent Posts widget.
+		 * Filters the arguments for the most visited Posts widget.
 		 *
 		 * @since 3.4.0
 		 * @since 4.9.0 Added the `$instance` parameter.
 		 *
 		 * @see WP_Query::get_posts()
 		 *
-		 * @param array $args     An array of arguments used to retrieve the recent posts.
+		 * @param array $args     An array of arguments used to retrieve the most visited posts.
 		 * @param array $instance Array of settings for the current widget.
 		 */
 		$r = new WP_Query(
-			apply_filters(
-				'widget_posts_args',
-				array(
-					'posts_per_page'      => $number,
-					'no_found_rows'       => true,
-					'post_status'         => 'publish',
-					'ignore_sticky_posts' => true,
-				),
-				$instance
+			array(
+				'meta_key'       => 'post_count_meta',
+				'orderby'        => array( 'visit_count' => 'DESC' ),
+				'posts_per_page' => $number,
 			)
 		);
 
@@ -93,21 +88,25 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
-		<?php foreach ( $r->posts as $recent_post ) : ?>
+		<?php foreach ( $r->posts as $current_post ) : ?>
 			<?php
-				$post_title = get_the_title( $recent_post->ID );
+				$post_title = get_the_title( $current_post->ID );
 				$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)' );
 			?>
 			<div class="popular-post">
 				<div class="popular-post-contents">
-					<a href="<?php the_permalink( $recent_post->ID ); ?>"><?php echo esc_html( $title ); ?></a>
+					<a href="<?php the_permalink( $current_post->ID ); ?>"><?php echo esc_html( $title ); ?></a>
+					<span title="Post count" class="float-right"><?php echo '&nbsp;&nbsp;(' . esc_html( $current_post->post_count_meta['visit_count'] ) . ')'; ?></span>
 					<?php if ( $show_date ) : ?>
-						<span class="popular-post-time line-break"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
+						<span class="popular-post-time line-break"><?php echo get_the_date( '', $current_post->ID ); ?></span>
 					<?php endif; ?>
 				</div>
 			</div>
 			<hr/>
-		<?php endforeach; ?>
+			<?php
+		endforeach;
+		wp_reset_postdata();
+		?>
 
 		<?php
 		echo $args['after_widget']; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -115,7 +114,7 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 	}
 
 	/**
-	 * Handles updating the settings for the current Recent Posts widget instance.
+	 * Handles updating the settings for the most visited Posts widget instance.
 	 *
 	 * @since 2.8.0
 	 *
@@ -133,7 +132,7 @@ class WP_Custom_Widget_Recent_Posts extends WP_Widget {
 	}
 
 	/**
-	 * Outputs the settings form for the Recent Posts widget.
+	 * Outputs the settings form for the most visited Posts widget.
 	 *
 	 * @since 2.8.0
 	 *

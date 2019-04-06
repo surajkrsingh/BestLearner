@@ -6,9 +6,40 @@
  * @package lifestyle
  */
 
+if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
+
+	if ( wp_verify_nonce( sanitize_key( $_POST['submit_post'] ), 'bl_subscribe_nonce_action' ) ) {
+		$bl_subscribe_name  = sanitize_text_field( filter_input( INPUT_POST, 'bl_subscribe_name', FILTER_SANITIZE_STRING ) );
+		$bl_subscribe_email = sanitize_text_field( filter_input( INPUT_POST, 'bl_subscribe_email', FILTER_SANITIZE_EMAIL ) );
+
+		$bl_subscribe_username = strtolower( trim( preg_replace( '/\s+/', ' ', $bl_subscribe_name ) ) );
+
+		if ( ! empty( $bl_subscribe_email ) && ! email_exists( $bl_subscribe_email ) && ! username_exists( $bl_subscribe_username ) && ! empty( $bl_subscribe_username ) ) {
+			$usermeta = array(
+				'user_login' => $bl_subscribe_username,
+				'user_pass'  => null,
+				'user_email' => $bl_subscribe_email,
+				'role'       => 'subscriber',
+			);
+			$user_id  = wp_insert_user( $usermeta );
+			if ( ! is_wp_error( $user_id ) ) {
+				$error_message = 'Thank you for subscribe us !!';
+				echo "<script type='text/javascript'>alert('$error_message');</script>";
+			}
+		} else {
+			$error_message = esc_html__( 'Already subscribed by you', 'life-styel' );
+			echo "<script type='text/javascript'>alert('$error_message');</script>";
+		}
+	} else {
+		$error_message = esc_html__( 'Failed Nonce Verification ', 'life-styel' );
+		echo "<script type='text/javascript'>alert('$error_message');</script>";
+	}
+}
+
 ?>
 </section>
 </main>
+	<button type="button" class="bestlearner-back-to-top" ><i class="fa fa-arrow-circle-up"></i></button>
 	<footer class="footer">
 		<section class="footer__footer-top">
 			<!-- Static Contents for tweets and subscribe -->
@@ -16,19 +47,20 @@
 				<h4 class="footer-box__title text text--uppercase">Contact Us</h4>
 				<hr class="hr-line--green"/>
 				<span class="line-break caption-text">
-					Address : 1 Ground floor Pyramid icon business hub near jhhagriya circle palanpur jakatnaka Surat-395005
+					Address : Pune Maharashtra ( India )
 				</span>
 				<span class="line-break caption-text">
-					Contact No : +917284970941 
+					Contact No : +917284970941
 				</span>
 				<span class="line-break caption-text">
-					Email : bitscamp@gmail.com
+					Email : bestlearner.org@gmail.com
+
 				</span>
 				<span class="line-break caption-text">
-					Site : <a href="www.bitscamp.com">www.bitscamp.com</a>
+					Site : <a href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank">www.bestlearner.org</a>
 				</span>
 				<div class="col">
-					<a href="#" class="button button--green text text--uppercase">More</a>
+					<a href="#" class="button button--default text text--uppercase">More</a>
 				</div>
 			</div>
 			<div class="footer-box">
@@ -37,7 +69,7 @@
 				</h4>
 				<hr class="hr-line--green"/>
 				<div class="map-container">
-					<iframe class="map-container__google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d464.92734145750995!2d72.78190328576677!3d21.21523790669608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c3f9f31b41f%3A0x6fb6c46a45175dc0!2sPiramyd+Icon!5e0!3m2!1sen!2sin!4v1552673672943"  frameborder="0" allowfullscreen></iframe>
+					<iframe class="map-container__google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1891.5097121579201!2d73.95554806899476!3d18.52802434232243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzQwLjgiTiA3M8KwNTcnMjMuOSJF!5e0!3m2!1sen!2sin!4v1554310329979!5m2!1sen!2sin"  frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 			<?php if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
@@ -47,36 +79,41 @@
 				<h4 class="footer-box__title text text--uppercase">subscribe & newsletter</h4>
 				<hr class="hr-line--green"/>
 				<span class="line-break caption-text">
-				Subscribe and get notification when new atricles come.
+				Subscribe and get notification when new article come.
 				</span>
-				<div class="form">
+				<form class="form" method="post">
+					<?php wp_nonce_field( 'bl_subscribe_nonce_action', 'submit_post' ); ?>
 					<div class="col">
 						<label for="subscribe name"></label>
-						<input type="text" class="input input-box" placeholder="YOUR NAME"/>
+						<input type="text" class="input input-box" placeholder="YOUR NAME" name="bl_subscribe_name" id="bl_subscribe_name"/>
 					</div>
 					<div class="col">
 						<label for="subscribe email"></label>
-						<input type="text" class="input input-box" placeholder="YOUR EMAIL ID"/>
+						<input type="text" class="input input-box" placeholder="YOUR EMAIL ID" name="bl_subscribe_email" id="bl_subscribe_email"/>
 					</div>
 					<div class="col">
-						<button type="submit" class="button button--subscribe text text--uppercase">subscribe now</button>
+						<button type="submit" class="button button--subscribe text text--uppercase" id="bl_subscribe_submit_button" name="bl_subscribe_submit_button">subscribe now</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</section>
 		<section class="footer__footer-bottom">
 			<div class="footer-bottom__social">
 				<ul class="menu-list">
-					<li class="menu-list__item--square divider divider--left"><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-					<li class="menu-list__item--square divider divider--left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li class="menu-list__item--square divider divider--left"><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
-					<li class="menu-list__item--square divider divider--left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					<li class="menu-list__item--square divider divider--left divider--right"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-rss"><a href="<?php echo esc_url( home_url( '/feed' ) ); ?>"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-tumblr"><a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-instagram"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-facebook"><a href="https://www.facebook.com/Best-Learner-564158077408955/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-linkedin"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+					<li class="menu-list__item--square post-tag--bg-color-youtube"><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
 				</ul>
 			</div>
+			<div class="footer-copy-text">© Copyright 2019. All Rights Reserved.</div>
 		</section>
 	</footer>
 	<div class="lifestyle-back-to-top" id="lifestyle-back-to-top"></div>
 	<?php wp_footer(); ?>
 </body>
 </html>
+<?php

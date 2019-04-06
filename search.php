@@ -33,23 +33,13 @@ get_header();
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				?>
-				<div class="box">
-					<div class="box-contents">
-					<?php get_template_part( 'template-parts/content', 'search' ); ?>
-					</div>
-				</div>
-				<?php
+				get_template_part( 'template-parts/content', 'recent-post' );
 			endwhile;
 		else :
 			?>
-		<div class="box">
-			<div class="box-contents">
 			<?php
 				get_template_part( 'template-parts/content', 'none' );
 			?>
-			</div>
-		</div>
 			<?php
 		endif;
 			lifestyle_pagination();

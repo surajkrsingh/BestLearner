@@ -18,3 +18,4 @@ readme.txt
 yarn-error.log
 .distignore
 bin/
+~/
