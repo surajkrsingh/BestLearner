@@ -31,38 +31,6 @@ class Top_Post_Contributors extends WP_Widget {
 	}
 
 	/**
-	 * The widget form (for the backend ).
-	 *
-	 * @param Object $instance .
-	 */
-	public function form( $instance ) {
-		$defaults = array(
-			'title'  => '',
-		);
-		?>
-
-		<!-- Title textbox -->
-			<div class="meta-options wpbp_field">
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title', 'bestlearner' ); ?></label>
-				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
-			</div>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Update widget settings.
-	 *
-	 * @param Array $new_instance .
-	 * @param Array $old_instance .
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance          = $old_instance;
-		$instance['title'] = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
-		return $instance;
-	}
-
-	/**
 	 * Display the widget.
 	 *
 	 * @param Array $args .
@@ -70,16 +38,12 @@ class Top_Post_Contributors extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		// Check the widget options.
-		$title  = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
 		// Display the widget.
 		echo '<div class="footer-box">';
 
 		// Display widget title if defined.
-		if ( isset( $title ) ) {
-			echo ( '<h4 class="footer-box__title text text--uppercase">' . esc_html( $title ) . '</h4>' );
-			echo ( '<hr class="hr-line--green"/>' );
-		}
+		echo ( '<h4 class="footer-box__title text text--uppercase">Top Contributors</h4>' );
+		echo ( '<hr class="hr-line--green"/>' );
 
 		// Display pic of contributors.
 		$users = get_users(
@@ -111,4 +75,3 @@ class Top_Post_Contributors extends WP_Widget {
 			<?php
 	}
 }
-

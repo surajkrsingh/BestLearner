@@ -110,7 +110,6 @@ if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
 		</section>
 		<progress class="progress-bar" id="progressbar" value="0"></progress>
 	</footer>
-	<div class="bestlearner-back-to-top" id="bestlearner-back-to-top"></div>
 	<?php wp_footer(); ?>
 </body>
 </html>
