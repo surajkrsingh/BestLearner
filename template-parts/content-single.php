@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 $new_post_id            = get_the_ID();
@@ -61,7 +61,7 @@ update_post_meta( $new_post_id, 'post_count_meta', $post_count_meta );
 			<?php
 			$post_tags = get_the_tags();
 			if ( ! empty( $post_tags ) ) {
-				foreach ( $post_tags as $tag ) {
+				foreach ( $post_tags as $tag ) { //phpcs:ignore
 					printf( '<li class="post-tag text--uppercase"><a href="%2$s">%1$s</a></li>', esc_html( $tag->name ), esc_attr( get_term_link( $tag->term_id ) ) );
 				}
 				wp_reset_postdata();

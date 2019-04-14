@@ -2,10 +2,10 @@
 /**
  * Infinite scroll for the theme.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Class Infinite_Scroll

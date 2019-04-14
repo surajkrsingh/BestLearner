@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();
@@ -16,7 +16,7 @@ get_header();
 				<h4 class="page-title">
 					<?php
 					/* translators: %s: search phrase */
-					printf( esc_html__( 'Search Results for: %s', 'lifestyle' ), '<span>' . get_search_query() . '</span>' );
+					printf( esc_html__( 'Search Results for: %s', 'bestlearner' ), '<span>' . get_search_query() . '</span>' );
 					?>
 				</h4>
 				<hr class="hr-line--green"/>
@@ -42,7 +42,7 @@ get_header();
 			?>
 			<?php
 		endif;
-			lifestyle_pagination();
+			bestlearner_pagination();
 		?>
 	</div>
 <?php

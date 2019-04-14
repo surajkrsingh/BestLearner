@@ -1,7 +1,7 @@
 /**
- * lifestyle component.
+ * bestlearner component.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 export { default as WebFont } from './fonts';

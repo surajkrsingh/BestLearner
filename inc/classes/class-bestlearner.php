@@ -2,15 +2,15 @@
 /**
  * Bootstraps the Theme.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Main theme bootstrap file.
  */
-class Lifestyle extends Base {
+class BestLearner extends Base {
 
 	/**
 	 * Assets class instance.
@@ -53,7 +53,7 @@ class Lifestyle extends Base {
 	 */
 	public function setup_theme() {
 
-		load_theme_textdomain( 'lifestyle', LIFESTYLE_TEMP_DIR . '/languages' );
+		load_theme_textdomain( 'bestlearner', BESTLEARNER_TEMP_DIR . '/languages' );
 
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
@@ -105,7 +105,7 @@ class Lifestyle extends Base {
 			)
 		);
 
-		add_editor_style( array( 'editor-style.css', lifestyle_main_font_url() ) );
+		add_editor_style( array( 'editor-style.css', bestlearner_main_font_url() ) );
 
 		// Gutenberg theme support.
 		add_theme_support( 'wp-block-styles' );
@@ -113,7 +113,7 @@ class Lifestyle extends Base {
 
 		register_nav_menus(
 			array(
-				'primary' => esc_html__( 'Primary Menu', 'lifestyle' ),
+				'primary' => esc_html__( 'Primary Menu', 'bestlearner' ),
 			)
 		);
 
@@ -132,7 +132,7 @@ class Lifestyle extends Base {
 	public function add_read_more_link() {
 		global $post;
 
-		return sprintf( '<a class="moretag" href="%s">%s</a>', get_permalink( $post->ID ), esc_html__( 'Read More', 'lifestyle' ) );
+		return sprintf( '<a class="moretag" href="%s">%s</a>', get_permalink( $post->ID ), esc_html__( 'Read More', 'bestlearner' ) );
 	}
 
 	/**

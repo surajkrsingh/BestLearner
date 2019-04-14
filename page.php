@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();
@@ -27,7 +27,7 @@ get_header();
 					comments_template();
 				endif;
 			endwhile; // End of the loop.
-			lifestyle_pagination();
+			bestlearner_pagination();
 			?>
 	</div><!-- #main -->
 <?php

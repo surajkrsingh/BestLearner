@@ -5,17 +5,17 @@
  * @link  https://github.com/rtCamp/suraj-singh/tree/wp-themes
  * @since 1.0
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /**
- * Class Lifestyle_Slider for settings.
+ * Class BestLearner_Slider for settings.
  *
- * @package lifestyle
+ * @package bestlearner
  *
  * @author Suraj Singh <suraj.sk243@gmail.comgmail.com>
  */
-class Lifestyle_Slider {
+class BestLearner_Slider {
 
 	/**
 	 * Instance of this class.
@@ -30,11 +30,11 @@ class Lifestyle_Slider {
 	 *
 	 * @since 1.0
 	 *
-	 * @return Lifestyle_Slider instance.
+	 * @return BestLearner_Slider instance.
 	 */
 	final public static function get_instance() {
 		if ( ! isset( static::$instance ) ) {
-			static::$instance = new Lifestyle_Slider();
+			static::$instance = new BestLearner_Slider();
 			static::$instance->setup();
 		}
 		return self::$instance;
@@ -52,28 +52,28 @@ class Lifestyle_Slider {
 	}
 
 	/**
-	 * Create custom post type Lifestyle_Slider.
+	 * Create custom post type BestLearner_Slider.
 	 */
 	public function create_post_type_slider() {
 		$labels = array(
-			'name'               => __( 'Sliders', 'lifestyle' ),
-			'singular_name'      => __( 'Slider', 'lifestyle' ),
-			'menu_name'          => __( 'Slider', 'lifestyle' ),
-			'name_admin_bar'     => __( 'Slider', 'lifestyle' ),
-			'add_new'            => __( 'Add New Slider', 'lifestyle' ),
-			'add_new_item'       => __( 'Add New Slider', 'lifestyle' ),
-			'new_item'           => __( 'New Slider', 'lifestyle' ),
-			'edit_item'          => __( 'Edit Slider', 'lifestyle' ),
-			'view_item'          => __( 'View Slider', 'lifestyle' ),
-			'all_items'          => __( 'All Sliders', 'lifestyle' ),
-			'search_items'       => __( 'Search Sliders', 'lifestyle' ),
-			'parent_item_colon'  => __( 'Parent Sliders:', 'lifestyle' ),
-			'not_found'          => __( 'No Slider found.', 'lifestyle' ),
-			'not_found_in_trash' => __( 'No Slider found in Trash.', 'lifestyle' ),
+			'name'               => __( 'Sliders', 'bestlearner' ),
+			'singular_name'      => __( 'Slider', 'bestlearner' ),
+			'menu_name'          => __( 'Slider', 'bestlearner' ),
+			'name_admin_bar'     => __( 'Slider', 'bestlearner' ),
+			'add_new'            => __( 'Add New Slider', 'bestlearner' ),
+			'add_new_item'       => __( 'Add New Slider', 'bestlearner' ),
+			'new_item'           => __( 'New Slider', 'bestlearner' ),
+			'edit_item'          => __( 'Edit Slider', 'bestlearner' ),
+			'view_item'          => __( 'View Slider', 'bestlearner' ),
+			'all_items'          => __( 'All Sliders', 'bestlearner' ),
+			'search_items'       => __( 'Search Sliders', 'bestlearner' ),
+			'parent_item_colon'  => __( 'Parent Sliders:', 'bestlearner' ),
+			'not_found'          => __( 'No Slider found.', 'bestlearner' ),
+			'not_found_in_trash' => __( 'No Slider found in Trash.', 'bestlearner' ),
 		);
 		$args   = array(
 			'labels'          => $labels,
-			'description'     => __( 'This is custom post type slider.', 'lifestyle' ),
+			'description'     => __( 'This is custom post type slider.', 'bestlearner' ),
 			'public'          => true,
 			'rewrite'         => array( 'slug' => 'slider_post' ),
 			'capability_type' => 'post',
@@ -114,7 +114,7 @@ class Lifestyle_Slider {
 		add_submenu_page(
 			'edit.php?post_type=slider_post',
 			'Slider-Settings',
-			__( 'Slider Settings', 'lifestyle' ),
+			__( 'Slider Settings', 'bestlearner' ),
 			'manage_options',
 			'slider_settings_menu',
 			array( $this, 'slider_settings_html_page' )
@@ -124,7 +124,7 @@ class Lifestyle_Slider {
 	 * Create html page along with elements for book setting.
 	 */
 	public function slider_settings_html_page() {
-		include_once LIFESTYLE_TEMP_DIR . '/inc/slider-settings.php';
+		include_once BESTLEARNER_TEMP_DIR . '/inc/slider-settings.php';
 	}
 	/**
 	 * Register slider setting options.
@@ -133,4 +133,4 @@ class Lifestyle_Slider {
 		register_setting( 'slider-settings-group', 'primary_slider' );
 	}
 }
-Lifestyle_Slider::get_instance();
+BestLearner_Slider::get_instance();

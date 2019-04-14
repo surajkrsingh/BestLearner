@@ -4,7 +4,7 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 ?>
@@ -12,7 +12,7 @@
 <section class="box">
 	<div class="box-contents">
 		<header class="page-header">
-			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'lifestyle' ); ?></h1>
+			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'bestlearner' ); ?></h1>
 		</header><!-- .page-header -->
 
 		<div class="page-content">
@@ -24,7 +24,7 @@
 					printf(
 						wp_kses(
 							/* translators: 1. is add new post url */
-							__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'lifestyle' ),
+							__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'bestlearner' ),
 							array(
 								'a' => array(
 									'href' => array(),
@@ -38,12 +38,12 @@
 				<?php
 			} elseif ( is_search() ) {
 				?>
-				<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'lifestyle' ); ?></p>
+				<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bestlearner' ); ?></p>
 				<?php
 				get_search_form();
 			} else {
 				?>
-				<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lifestyle' ); ?></p>
+				<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'bestlearner' ); ?></p>
 				<?php
 				get_search_form();
 			}

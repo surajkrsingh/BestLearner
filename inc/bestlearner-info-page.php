@@ -4,10 +4,10 @@
  * Custom setting for slider.
  *
  * @since   1.0
- * @package lifestyle
+ * @package bestlearner
  */
 
 ?>
 <div>
-	<h4>Best-learner Infomation</h4>
+	<h1 class="wp-heading-inline">Best-learner Infomation</h1>
 </div>

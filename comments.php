@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /*
@@ -35,7 +35,7 @@ if ( post_password_required() ) {
 
 			printf(
 				/* translators: %s: post title */
-				esc_html_x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'lifestyle' ),
+				esc_html_x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'bestlearner' ),
 				'<span>' . esc_html( get_the_title() ) . '</span>'
 			);
 
@@ -50,7 +50,7 @@ if ( post_password_required() ) {
 						'%1$s thoughts on &ldquo;%2$s&rdquo;',
 						$comments_number,
 						'comments title',
-						'lifestyle'
+						'bestlearner'
 					)
 				),
 				filter_var( number_format_i18n( $comments_number ), FILTER_VALIDATE_INT ),
@@ -67,11 +67,11 @@ if ( post_password_required() ) {
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { // Are there comments to navigate through?
 			?>
 			<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'lifestyle' ); ?></h2>
+				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'bestlearner' ); ?></h2>
 				<div class="nav-links clearfix">
 
-					<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'lifestyle' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'lifestyle' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'bestlearner' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'bestlearner' ) ); ?></div>
 
 				</div><!-- .nav-links -->
 			</nav><!-- #comment-nav-above -->
@@ -81,7 +81,7 @@ if ( post_password_required() ) {
 		// Show all the comments along with childs.
 		wp_list_comments(
 			array(
-				'callback'  => 'lifestyle_post_comment',
+				'callback'  => 'bestlearner_post_comment',
 				'type'      => 'comment',
 				'max_depth' => '5',
 			)
@@ -90,11 +90,11 @@ if ( post_password_required() ) {
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { // Are there comments to navigate through?
 			?>
 			<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'lifestyle' ); ?></h2>
+				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'bestlearner' ); ?></h2>
 				<div class="nav-links clearfix">
 
-					<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'lifestyle' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'lifestyle' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'bestlearner' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'bestlearner' ) ); ?></div>
 
 				</div><!-- .nav-links -->
 			</nav><!-- #comment-nav-below -->
@@ -106,7 +106,7 @@ if ( post_password_required() ) {
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 		?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'lifestyle' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'bestlearner' ); ?></p>
 		<?php
 	}
 	?>
@@ -115,7 +115,7 @@ if ( post_password_required() ) {
 
 <!-- #comments form-->
 <div class="form-container">
-	<div class="box-contents__title"><?php esc_html_e( 'LEAVE A COMMENT', 'lifestyle' ); ?></div>
+	<div class="box-contents__title"><?php esc_html_e( 'LEAVE A COMMENT', 'bestlearner' ); ?></div>
 	<hr class="hr-line--green"/>
 		<div class="form">
 			<?php
@@ -133,7 +133,7 @@ if ( post_password_required() ) {
  * @param array      $args It contain attributes.
  * @param int        $depth It contain depth level.
  */
-function lifestyle_post_comment( $comment, $args, $depth ) {
+function bestlearner_post_comment( $comment, $args, $depth ) {
 	?>
 	<div class="comment-post" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> >
 		<!-- Avtar for commentor. -->
@@ -168,7 +168,7 @@ function lifestyle_post_comment( $comment, $args, $depth ) {
 				esc_html( get_comment_date() ),
 				esc_html( get_comment_time() )
 			);
-			edit_comment_link( __( '(Edit)', 'lifestyle' ), '  ', '' );
+			edit_comment_link( __( '(Edit)', 'bestlearner' ), '  ', '' );
 			comment_text();
 			?>
 		</div>
@@ -176,7 +176,7 @@ function lifestyle_post_comment( $comment, $args, $depth ) {
 		<?php
 		if ( 0 === $comment->comment_approved ) {
 			?>
-		<em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'lifestyle' ); ?></em>
+		<em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'bestlearner' ); ?></em>
 		<?php } ?>	
 		</div>
 		<hr/>

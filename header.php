@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 remove_action( 'wp_head', '_admin_bar_bump_cb' );
@@ -20,6 +20,9 @@ add_filter( 'show_admin_bar', '__return_false' );
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+	<div class='progress' id='progress'>
+		<input type="hidden" id="progress-holder" value="0">
+	</div>
 	<?php get_template_part( 'template-parts/content', 'suggest-article' ); ?>
 	<header class="header">
 			<section class="header__top-header">
@@ -46,7 +49,7 @@ add_filter( 'show_admin_bar', '__return_false' );
 					endif;
 
 					$description  = get_bloginfo( 'description', 'display' );
-					$hide_tagline = get_theme_mod( 'lifestyle_hide_tagline' );
+					$hide_tagline = get_theme_mod( 'bestlearner_hide_tagline' );
 					$desc_class   = $hide_tagline ? 'screen-reader-text' : false;
 
 					if ( $description || is_customize_preview() ) :
@@ -68,7 +71,7 @@ add_filter( 'show_admin_bar', '__return_false' );
 					<a href="javascript:void(0);" class="button button--green open">Suggest an article</a>
 					<?php
 					if ( is_user_logged_in() ) :
-						$current_user = wp_get_current_user();
+						$current_user = wp_get_current_user(); //phpcs:ignore
 						?>
 						<a href="javascript:void(0);" class="user-profile" title="<?php echo esc_html( $current_user->display_name ); ?>">
 							<?php
@@ -81,7 +84,7 @@ add_filter( 'show_admin_bar', '__return_false' );
 				</div>
 			</section>
 			<section class="header__bottom-header">
-				<nav id="site-navigation" class="bottom-header__nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'lifestyle' ); ?>">
+				<nav id="site-navigation" class="bottom-header__nav" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'bestlearner' ); ?>">
 					<?php
 					require 'inc/classes/class-primary-menu.php';
 					wp_nav_menu(

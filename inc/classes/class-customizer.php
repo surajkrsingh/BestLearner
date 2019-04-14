@@ -2,10 +2,10 @@
 /**
  * Customizer.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Class Customizer
@@ -71,7 +71,7 @@ class Customizer extends Base {
 	 */
 	public function enqueue_customizer_scripts() {
 		wp_enqueue_script(
-			'lifestyle-customizer',
+			'bestlearner-customizer',
 			Assets::asset_path( 'admin/customizer.js' ),
 			array( 'customize-preview' ),
 			Assets::asset_version( 'admin/customizer.js' ),

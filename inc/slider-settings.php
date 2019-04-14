@@ -5,7 +5,7 @@
  * Custom setting for slider.
  *
  * @since   1.0
- * @package lifestyle
+ * @package bestlearner
  */
 
 settings_fields( 'slider-settings-group' );
@@ -18,8 +18,8 @@ $primary_slider_title = isset( $primary_slider_title ) ? $primary_slider_title :
 
 ?>
 <div class="wrap" role="main">
-	<h3><?php esc_html_e( 'Primary Slider Setting', 'lifestyle' ); ?></h3>  
-		<label for="primary_slider"><?php esc_html_e( 'Select slider', 'lifestyle' ); ?>
+	<h3><?php esc_html_e( 'Primary Slider Setting', 'bestlearner' ); ?></h3>  
+		<label for="primary_slider"><?php esc_html_e( 'Select slider', 'bestlearner' ); ?>
 			<select id="primary_slider" name="primary_slider">
 				<option value="<?php echo esc_attr( $slider_id ); ?>" selected><?php echo esc_html( $primary_slider_title ); ?></option>   
 				<?php

@@ -7,32 +7,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
-"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: \n"
-"Language: hi_IN\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../404.php:16
+#: ../404.php:24
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: ../404.php:20
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+#: ../404.php:28
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
 #. translators: %1$s: smiley
-#: ../404.php:26
+#: ../404.php:34
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
@@ -78,11 +68,7 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: ../header.php:24
-msgid "submit story"
-msgstr "कहानी प्रस्तुत करें"
-
-#: ../header.php:26, ../inc/classes/class-bestlearner.php:116
+#: ../header.php:84, ../inc/classes/class-bestlearner.php:116
 msgid "Primary Menu"
 msgstr ""
 
@@ -137,18 +123,19 @@ msgstr ""
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
+#: ../inc/classes/class-bestlearner-info.php:79
+msgid "Best-Learner Information"
+msgstr ""
+
 #: ../inc/classes/class-bestlearner-slider.php:59
 msgid "Sliders"
 msgstr ""
 
-#: ../inc/classes/class-bestlearner-slider.php:60,
-#: ../inc/classes/class-bestlearner-slider.php:61,
-#: ../inc/classes/class-bestlearner-slider.php:62
+#: ../inc/classes/class-bestlearner-slider.php:60, ../inc/classes/class-bestlearner-slider.php:61, ../inc/classes/class-bestlearner-slider.php:62
 msgid "Slider"
 msgstr ""
 
-#: ../inc/classes/class-bestlearner-slider.php:63,
-#: ../inc/classes/class-bestlearner-slider.php:64
+#: ../inc/classes/class-bestlearner-slider.php:63, ../inc/classes/class-bestlearner-slider.php:64
 msgid "Add New Slider"
 msgstr ""
 
@@ -185,7 +172,7 @@ msgid "No Slider found in Trash."
 msgstr ""
 
 #: ../inc/classes/class-bestlearner-slider.php:76
-msgid "This is custom post type book."
+msgid "This is custom post type slider."
 msgstr ""
 
 #: ../inc/classes/class-bestlearner-slider.php:117
@@ -196,77 +183,60 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: ../inc/classes/class-widgets.php:24
-msgid "Sidebar"
+#: ../inc/classes/class-top-author.php:27
+msgid "Your site&#8217;s most top author."
 msgstr ""
 
-#: ../inc/classes/class-widgets.php:36
-msgid "Footer"
+#: ../inc/classes/class-top-author.php:30
+msgid "Top Author"
 msgstr ""
 
-#: ../inc/classes/class-wp-custom-widget-about-me.php:26
-msgid "About Me Widget"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-about-me.php:47
-msgid "Widget Title"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-about-me.php:52
-msgid "Select"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-about-me.php:113
-msgid "read more abour me"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:27
-msgid "A list or dropdown of categories."
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:30
-msgid "Custom Categories"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:47
-msgid "Categories"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:76
-msgid "Select Category"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:167,
-#: ../inc/classes/class-wp-custom-widget-recent-posts.php:153
+#: ../inc/classes/class-top-author.php:149, ../inc/classes/class-top-commented-post.php:149, ../inc/classes/class-top-visited-post.php:146
 msgid "Title:"
 msgstr ""
 
-#: ../inc/classes/class-wp-custom-widget-categories.php:171
-msgid "Display as dropdown"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:174
-msgid "Show post counts"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-categories.php:177
-msgid "Show hierarchy"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-recent-posts.php:27
-msgid "Your site&#8217;s most recent Posts."
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-recent-posts.php:30
-msgid "Custom Recent Posts"
-msgstr ""
-
-#: ../inc/classes/class-wp-custom-widget-recent-posts.php:156
+#: ../inc/classes/class-top-author.php:152, ../inc/classes/class-top-commented-post.php:152, ../inc/classes/class-top-visited-post.php:149
 msgid "Number of posts to show:"
 msgstr ""
 
-#: ../inc/classes/class-wp-custom-widget-recent-posts.php:160
+#: ../inc/classes/class-top-commented-post.php:27
+msgid "Your site&#8217;s most commented Posts."
+msgstr ""
+
+#: ../inc/classes/class-top-commented-post.php:30
+msgid "Top Commented Posts"
+msgstr ""
+
+#: ../inc/classes/class-top-commented-post.php:156, ../inc/classes/class-top-visited-post.php:153
 msgid "Display post date?"
+msgstr ""
+
+#: ../inc/classes/class-top-post-contributors.php:26
+msgid "Top Post Contributors"
+msgstr ""
+
+#: ../inc/classes/class-top-post-contributors.php:46
+msgid "Widget Title"
+msgstr ""
+
+#: ../inc/classes/class-top-visited-post.php:27
+msgid "Your site&#8217;s most visited Posts."
+msgstr ""
+
+#: ../inc/classes/class-top-visited-post.php:30
+msgid "Top Visited Posts"
+msgstr ""
+
+#: ../inc/classes/class-widgets.php:24
+msgid "Right Sidebar"
+msgstr ""
+
+#: ../inc/classes/class-widgets.php:36
+msgid "Left Sidebar"
+msgstr ""
+
+#: ../inc/classes/class-widgets.php:48
+msgid "Footer"
 msgstr ""
 
 #: ../page-templates/full-width-template.php:3
@@ -274,7 +244,7 @@ msgid "Full Width Template"
 msgstr ""
 
 #. translators: %s: search phrase
-#: ../search.php:18
+#: ../search.php:19
 msgid "Search Results for: %s"
 msgstr ""
 
@@ -298,26 +268,21 @@ msgstr ""
 msgid "SIDEBAR"
 msgstr ""
 
-#: ../template-parts/content-none.php:14
+#: ../template-parts/content-none.php:15
 msgid "Nothing Found"
 msgstr ""
 
 #. translators: 1. is add new post url
-#: ../template-parts/content-none.php:26
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+#: ../template-parts/content-none.php:27
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: ../template-parts/content-none.php:40
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
+#: ../template-parts/content-none.php:41
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
-#: ../template-parts/content-none.php:45
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
+#: ../template-parts/content-none.php:46
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
 #: ../template-parts/content-page.php:28, ../template-parts/content.php:47

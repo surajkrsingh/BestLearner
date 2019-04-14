@@ -1,7 +1,7 @@
 /**
  * Single page scripts.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 import '../sass/single.scss';

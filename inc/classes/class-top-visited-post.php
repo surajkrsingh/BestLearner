@@ -10,7 +10,7 @@
 /**
  * Core class used to implement a Top Visited Post widget.
  *
- * @since 2.8.0
+ * @since 1.0.0
  *
  * @see WP_Widget
  */
@@ -19,22 +19,22 @@ class Top_Visited_Post extends WP_Widget {
 	/**
 	 * Sets up a  most visited Posts widget instance.
 	 *
-	 * @since 2.8.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		$widget_ops = array(
 			'classname'                   => 'widget_recent_entries',
-			'description'                 => __( 'Your site&#8217;s most visited Posts.', 'lifestyle' ),
+			'description'                 => __( 'Your site&#8217;s most visited Posts.', 'bestlearner' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'top-visited-posts', __( 'Top Visited Posts', 'lifestyle' ), $widget_ops );
+		parent::__construct( 'top-visited-posts', __( 'Top Visited Posts', 'bestlearner' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_entries';
 	}
 
 	/**
 	 * Outputs the content for the Top Visited Post widget instance.
 	 *
-	 * @since 2.8.0
+	 * @since 1.0.0
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
@@ -59,8 +59,8 @@ class Top_Visited_Post extends WP_Widget {
 		/**
 		 * Filters the arguments for the most visited Posts widget.
 		 *
-		 * @since 3.4.0
-		 * @since 4.9.0 Added the `$instance` parameter.
+		 * @since 1.0.0
+		 * @since 1.0.0 Added the `$instance` parameter.
 		 *
 		 * @see WP_Query::get_posts()
 		 *
@@ -96,7 +96,7 @@ class Top_Visited_Post extends WP_Widget {
 			<div class="popular-post">
 				<div class="popular-post-contents">
 					<a href="<?php the_permalink( $current_post->ID ); ?>"><?php echo esc_html( $title ); ?></a>
-					<span title="Post count" class="float-right"><?php echo '&nbsp;&nbsp;(' . esc_html( $current_post->post_count_meta['visit_count'] ) . ')'; ?></span>
+					<span title="Post count" class="float-right counter"><?php echo esc_html( $current_post->post_count_meta['visit_count'] ); ?></span>
 					<?php if ( $show_date ) : ?>
 						<span class="popular-post-time line-break"><?php echo get_the_date( '', $current_post->ID ); ?></span>
 					<?php endif; ?>
@@ -116,7 +116,7 @@ class Top_Visited_Post extends WP_Widget {
 	/**
 	 * Handles updating the settings for the most visited Posts widget instance.
 	 *
-	 * @since 2.8.0
+	 * @since 1.0.0
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
 	 *                            WP_Widget::form().
@@ -134,7 +134,7 @@ class Top_Visited_Post extends WP_Widget {
 	/**
 	 * Outputs the settings form for the most visited Posts widget.
 	 *
-	 * @since 2.8.0
+	 * @since 1.0.0
 	 *
 	 * @param array $instance Current settings.
 	 */
@@ -143,14 +143,14 @@ class Top_Visited_Post extends WP_Widget {
 		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
 		?>
-		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'lifestyle' ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bestlearner' ); ?></label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_attr_e( 'Number of posts to show:', 'lifestyle' ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_attr_e( 'Number of posts to show:', 'bestlearner' ); ?></label>
 		<input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $number ); ?>" size="3" /></p>
 
 		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" />
-		<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display post date?', 'lifestyle' ); ?></label></p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display post date?', 'bestlearner' ); ?></label></p>
 		<?php
 	}
 }

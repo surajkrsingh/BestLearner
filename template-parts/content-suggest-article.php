@@ -2,18 +2,18 @@
 /**
  * Suggestion for an article.
  *
- * @package the-suraj
+ * @package bestlearner
  */
 
 if ( isset( $_POST['save_suggested_article'] ) ) {
-	if ( wp_verify_nonce( sanitize_key( $_POST['submit_post'] ), 'bl_suggest_article_nonce_action' ) ) {
+	if ( wp_verify_nonce( sanitize_key( $_POST['submit_post'] ), 'bl_suggest_article_nonce_action' ) ) { //phpcs:ignore
 		$bl_article_title       = sanitize_text_field( filter_input( INPUT_POST, 'bl_article_title', FILTER_SANITIZE_STRING ) );
 		$bl_article_description = sanitize_text_field( filter_input( INPUT_POST, 'bl_article_description', FILTER_SANITIZE_STRING ) );
 		$bl_article_category    = sanitize_text_field( filter_input( INPUT_POST, 'bl_article_category', FILTER_SANITIZE_NUMBER_INT ) );
 
 		if ( isset( $_POST['g-recaptcha-response'] ) && ! empty( $_POST['g-recaptcha-response'] ) ) {
 			$secret          = '6LdMapsUAAAAAJVmWwzau7FKw5vMZ6yPOww9YZAe';
-			$verify_response = file_get_contents( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response'] );
+			$verify_response = file_get_contents( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response'] ); //phpcs:ignore
 			$response_data   = json_decode( $verify_response );
 			if ( $response_data->success ) {
 				if ( ! empty( $bl_article_title ) && ! empty( $bl_article_description ) && ! empty( $bl_article_category ) ) {
@@ -24,27 +24,27 @@ if ( isset( $_POST['save_suggested_article'] ) ) {
 						'post_author'   => 1,
 						'post_category' => array( $bl_article_category ),
 					);
-					$post_id  = wp_insert_post( $postmeta );
+					$post_id  = wp_insert_post( $postmeta ); //phpcs:ignore
 					if ( ! is_wp_error( $post_id ) ) {
 						$error_message = 'Thank you for a article suggestion !!';
-						echo "<script type='text/javascript'>alert('$error_message');</script>";
+						echo "<script type='text/javascript'>alert('$error_message');</script>";//phpcs:ignore
 					}
 					wp_reset_postdata();
 				} else {
-					$error_message = esc_html__( 'Please enter value', 'life-styel' );
-					echo "<script type='text/javascript'>alert('$error_message');</script>";
+					$error_message = esc_html__( 'Please enter value', 'bestlearner' );
+					echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 				}
 			} else {
-				$error_message = esc_html__( 'please fill captcha proper ', 'life-styel' );
-				echo "<script type='text/javascript'>alert('$error_message');</script>";
+				$error_message = esc_html__( 'please fill captcha proper ', 'bestlearner' );
+				echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 			}
 		} else {
-			$error_message = esc_html__( 'Invalid Request', 'life-styel' );
-			echo "<script type='text/javascript'>alert('$error_message');</script>";
+			$error_message = esc_html__( 'Invalid Request', 'bestlearner' );
+			echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 		}
 	} else {
-		$error_message = esc_html__( 'Failed Nonce Verification ', 'life-styel' );
-		echo "<script type='text/javascript'>alert('$error_message');</script>";
+		$error_message = esc_html__( 'Failed Nonce Verification ', 'bestlearner' );
+		echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 	}
 }
 ?>
@@ -73,7 +73,7 @@ if ( isset( $_POST['save_suggested_article'] ) ) {
 					)
 				);
 				if ( is_array( $categories_list ) && ! empty( $categories_list ) ) {
-					foreach ( $categories_list as $cat ) {
+					foreach ( $categories_list as $cat ) { //phpcs:ignore
 						printf( '<option value="%1$s"> %2$s </option>', esc_attr( $cat->term_id ), esc_html( $cat->name ) );
 					}
 				}

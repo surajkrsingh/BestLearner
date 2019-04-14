@@ -1,7 +1,7 @@
 /**
  * Home scripts.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 import '../sass/home.scss';

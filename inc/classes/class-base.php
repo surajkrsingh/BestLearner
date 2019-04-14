@@ -4,10 +4,10 @@
  *
  * @credit https://github.com/xwp/wp-foo-bar
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Class Base

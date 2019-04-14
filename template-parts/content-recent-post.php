@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 $new_post_id            = get_the_ID();
@@ -37,7 +37,7 @@ $post_tags              = get_the_tags();
 		<div class="box-contents__description">
 			<?php
 				$read_more = '&hellip; <a class="read-more-link" href="' . get_the_permalink() . '">Read Full Article</a>';
-				echo wpautop(
+				echo wpautop( //phpcs:ignore
 					wp_trim_words(
 						get_the_content(),
 						40,
@@ -50,7 +50,7 @@ $post_tags              = get_the_tags();
 			<ul class="box-action__tags">
 			<?php
 			if ( ! empty( $post_tags ) ) {
-				foreach ( $post_tags as $tag ) {
+				foreach ( $post_tags as $tag ) { //phpcs:ignore
 					printf( '<li class="post-tag text--uppercase"><a href="%2$s">%1$s</a></li>', esc_html( $tag->name ), esc_attr( get_term_link( $tag->term_id ) ) );
 				}
 			}

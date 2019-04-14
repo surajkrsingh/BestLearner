@@ -2,7 +2,7 @@
 /**
  * This is custom IU for primary menu.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /**

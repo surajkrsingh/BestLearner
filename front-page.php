@@ -8,13 +8,14 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();
-if ( is_home() ) {
-	//get_template_part( 'template-parts/content', 'slider' );
-}
+// if ( is_home() ) {
+// get_template_part( 'template-parts/content', 'slider' );
+// } 
+
 ?>
 <section class="section">
 	<?php get_sidebar( 'left' ); ?>
@@ -34,7 +35,7 @@ if ( is_home() ) {
 			get_template_part( 'template-parts/content', 'recent-post' );
 		}
 		wp_reset_postdata();
-		lifestyle_pagination();
+		bestlearner_pagination();
 	};
 	?>
 	</div>

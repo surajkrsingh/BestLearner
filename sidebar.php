@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 ?>
@@ -10,7 +10,7 @@
 	<h4>
 		<?php
 		if ( is_home() ) {
-			esc_html_e( 'SIDEBAR', 'lifestyle' );
+			esc_html_e( 'SIDEBAR', 'bestlearner' );
 		}
 		?>
 	</h4>

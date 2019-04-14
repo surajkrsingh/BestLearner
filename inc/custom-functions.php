@@ -2,7 +2,7 @@
 /**
  * Contains custom functions used for the theme
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /**
@@ -13,8 +13,8 @@
  *
  * @return void
  */
-function lifestyle_primary_classes( $more_classes = false, $override_foundation_classes = false ) {
-	$sidebar_position = get_theme_mod( 'lifestyle_sidebar_position' );
+function bestlearner_primary_classes( $more_classes = false, $override_foundation_classes = false ) {
+	$sidebar_position = get_theme_mod( 'bestlearner_sidebar_position' );
 
 	$foundation_classes = $override_foundation_classes ? $override_foundation_classes : 'large-8 medium-8 small-12 cell column';
 
@@ -26,7 +26,7 @@ function lifestyle_primary_classes( $more_classes = false, $override_foundation_
 		$foundation_classes = ' large-12 medium-12 small-12 cell column ';
 	}
 
-	echo esc_html( "lifestyle-primary {$foundation_classes} {$more_classes} clearfix" );
+	echo esc_html( "bestlearner-primary {$foundation_classes} {$more_classes} clearfix" );
 }
 
 /**
@@ -37,13 +37,13 @@ function lifestyle_primary_classes( $more_classes = false, $override_foundation_
  *
  * @return void
  */
-function lifestyle_secondary_classes( $more_classes = false, $override_foundation_classes = false ) {
+function bestlearner_secondary_classes( $more_classes = false, $override_foundation_classes = false ) {
 	// Override will be useful in page-templates.
-	$sidebar_position    = get_theme_mod( 'lifestyle_sidebar_position' );
+	$sidebar_position    = get_theme_mod( 'bestlearner_sidebar_position' );
 	$foundation_classes  = $override_foundation_classes ? $override_foundation_classes : 'large-4 medium-4 small-12 cell column';
 	$foundation_classes .= 'left' === $sidebar_position ? ' large-order-1 medium-order-1 small-order-2' : false;
 
-	echo esc_html( "lifestyle-secondary widget-area {$foundation_classes} {$more_classes} clearfix" );
+	echo esc_html( "bestlearner-secondary widget-area {$foundation_classes} {$more_classes} clearfix" );
 }
 
 
@@ -53,7 +53,7 @@ function lifestyle_secondary_classes( $more_classes = false, $override_foundatio
  *
  * @return string font url
  */
-function lifestyle_main_font_url() {
+function bestlearner_main_font_url() {
 
 	/**
 	 * Use font url without http://, we do this because google font without https have
@@ -67,9 +67,9 @@ function lifestyle_main_font_url() {
 }
 
 /**
- * lifestyle Pagination.
+ * Bestlearner Pagination.
  */
-function lifestyle_pagination() {
+function bestlearner_pagination() {
 
 	$allowed_tags = array(
 		'span' => array(
@@ -81,7 +81,7 @@ function lifestyle_pagination() {
 		),
 	);
 
-	printf( '<nav class="lifestyle-pagination clearfix">%s</nav>', wp_kses( paginate_links(), $allowed_tags ) );
+	printf( '<nav class="bestlearner-pagination clearfix">%s</nav>', wp_kses( paginate_links(), $allowed_tags ) );
 }
 
 /**
@@ -93,7 +93,7 @@ function lifestyle_pagination() {
  *
  * @return void
  */
-function lifestyle_get_template_part( $slug, $params = array() ) {
+function bestlearner_get_template_part( $slug, $params = array() ) {
 	if ( ! empty( $params ) ) {
 		foreach ( $params as $k => $param ) {
 			set_query_var( $k, $param );
@@ -101,3 +101,4 @@ function lifestyle_get_template_part( $slug, $params = array() ) {
 	}
 	get_template_part( $slug );
 }
+

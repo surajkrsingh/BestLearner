@@ -1,7 +1,7 @@
-lifestyle
+bestlearner
 ===
 
-lifestyle is a custom lifestyle created with underscore theme, which includes foundation basic grid system and some basic customizer settings which are required in almost all projects.
+bestlearner is a custom bestlearner created with underscore theme, which includes foundation basic grid system and some basic customizer settings which are required in almost all projects.
 
 What more does it have?
 ---------------
@@ -18,7 +18,6 @@ What more does it have?
 
 6) Some helpful php functions.
 
-7) Slick Slider
 
 and more..
 

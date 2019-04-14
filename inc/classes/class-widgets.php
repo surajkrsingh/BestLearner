@@ -2,10 +2,10 @@
 /**
  * Theme widgets.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Class Widgets
@@ -21,7 +21,7 @@ class Widgets extends Base {
 
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Right Sidebar', 'lifestyle' ),
+				'name'          => esc_html__( 'Right Sidebar', 'bestlearner' ),
 				'id'            => 'sidebar-1',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget widget-sidebar %2$s">',
@@ -33,7 +33,7 @@ class Widgets extends Base {
 
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Left Sidebar', 'lifestyle' ),
+				'name'          => esc_html__( 'Left Sidebar', 'bestlearner' ),
 				'id'            => 'sidebar-3',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget widget-sidebar %2$s">',
@@ -45,7 +45,7 @@ class Widgets extends Base {
 
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Footer', 'lifestyle' ),
+				'name'          => esc_html__( 'Footer', 'bestlearner' ),
 				'id'            => 'sidebar-2',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget widget-footer cell column %2$s">',

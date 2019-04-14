@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();
@@ -17,10 +17,10 @@ get_header();
 			get_template_part( 'template-parts/content', 'single' );
 
 			// About user.
-			get_template_part( 'template-parts/content', 'about-me' );
+			get_template_part( 'template-parts/content', 'about-author' );
 
 			// Popular post.
-			get_template_part( 'template-parts/content', 'popular-post' );
+			get_template_part( 'template-parts/content', 'related-post' );
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();

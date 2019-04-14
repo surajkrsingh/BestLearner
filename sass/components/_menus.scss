@@ -2,7 +2,7 @@
           Main Menu
 ===============================*/
 
-.lifestyle-main-navigation {
+.bestlearner-main-navigation {
 	clear: both;
 	display: block;
 	float: left;
@@ -32,8 +32,8 @@
 
 			li {
 
-				&:hover>ul,
-				&.focus>ul {
+				&:hover > ul,
+				&.focus > ul {
 					left: 100%;
 				}
 			}
@@ -42,14 +42,14 @@
 				width: 200px;
 			}
 
-			&:hover>a,
-			&.focus>a {
+			&:hover > a,
+			&.focus > a {
 				color: $color__link-hover;
 			}
 		}
 
-		li:hover>ul,
-		li.focus>ul {
+		li:hover > ul,
+		li.focus > ul {
 			left: auto;
 		}
 	}
@@ -58,8 +58,8 @@
 		float: left;
 		position: relative;
 
-		&:hover>a,
-		&.focus>a {
+		&:hover > a,
+		&.focus > a {
 			color: $color__link-hover;
 		}
 	}
@@ -70,9 +70,9 @@
 		padding: 10px;
 	}
 
-	.current_page_item>a,
-	.current-menu-item>a,
-	.current_page_ancestor>a {
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a {
 		color: $color__link-hover;
 	}
 }
@@ -109,61 +109,57 @@
 .menu-list {
 	display: flex;
 	list-style-type: none;
-	justify-content: space-between;
 	padding: 0;
 	height: 100%;
-
-	@media (min-width: 600px) and (max-width: 1024px) {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-}
-
-.menu-list__item {
-	font-weight: 600;
-	font-size: 11px;
-	padding: 0 10px 0 10px;
-	white-space: nowrap;
-	height: 100%;
-
-	a {
-		display: flex;
-		align-items: center;
-		height: 100%;
-		color: #fff;
-		opacity: 0.8;
-
-		&:hover {
-			opacity: 1;
-			border-bottom: solid 2px #fff;
+	justify-content: center;
+	.menu-list__item {
+		font-weight: 600;
+		padding: 0 1px;
+		a {
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			height: 100%;
+			color: #fff;
+			opacity: 0.8;
+			font-family: 'Times New Roman', Times, serif;
+			padding: 0 10px;
+			&:hover {
+				opacity: 1;
+				transition: 0.5s;
+				background: #33ba36;
+			}
+		}
+		@media (min-width: 320px) and (max-width: 600px) {
+			padding: 0;
 		}
 	}
-}
 
-a.menu-item-active {
-	opacity: 1;
-	border-bottom: solid 2px #fff;
-
-	@media (min-width: 320px) and (max-width: 600px) {
-		border: none;
-	}
-	@media (min-width: 600px) and (max-width: 1024px) {
+	a.menu-item-active {
 		opacity: 1;
+		border-bottom: solid 2px #fff;
+		background: #33ba36;
+		@media (min-width: 320px) and (max-width: 600px) {
+			opacity: 1;
+			border: 0;
+		}
+
+		@media (min-width: 600px) and (max-width: 1024px) {
+			opacity: 1;
+		}
 	}
-}
 
-.menu-list__item--square {
-	font-size: 1.5rem;
-	height: 3.0rem;
-	width: 3.0rem;
-	align-content: center;
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	border-top-left-radius: 1.0rem;
-	border-bottom-right-radius: 1.0rem;
-
-	a {
-		color: #fff;
+	.menu-list__item--square {
+		font-size: 1.5rem;
+		height: 3rem;
+		width: 3rem;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		border-radius: 2px;
+		margin: 0 2px;
+		a {
+			color: #fff;
+		}
 	}
 }

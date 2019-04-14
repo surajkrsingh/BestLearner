@@ -8,10 +8,10 @@
   "scripts": {
     "clean": "rm -rf build/*",
     "dev": "cross-env NODE_ENV=development webpack --watch --mode development --progress",
-    "init": "npm install && ./bin/rename.js && npm run pot && rm -rf .git .github ./bin/ languages/the-suraj.pot",
+    "init": "npm install && ./bin/rename.js && npm run pot && rm -rf .git .github ./bin/ languages/bestlearner.pot",
     "lint-css": "stylelint sass/**/*.scss --syntax scss",
     "lint-js": "eslint js/",
-    "pot": "wp-pot --src '**/*.php' --dest-file 'languages/the-suraj.pot' --domain 'bestlearner' --package 'the-suraj' ",
+    "pot": "wp-pot --src '**/*.php' --dest-file 'languages/bestlearner.pot' --domain 'bestlearner' --package 'bestlearner' ",
     "precommit": "npm run lint-css && npm run lint-js && npm run pot",
     "prod": "cross-env NODE_ENV=production webpack --mode production --progress",
     "update-deps": "rm -rf node_modules && rm package-lock.json && npm install"

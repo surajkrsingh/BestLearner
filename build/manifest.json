@@ -1,17 +1,10 @@
 {
-  "admin/customizer.js": "js/admin/customizer.js",
-  "admin/customizer.js.map": "js/admin/customizer.js.map",
+  "admin/customizer.js": "js/admin/customizer.420a83e09282db96832c.js",
   "fonts/Notera_PersonalUseOnly.ttf": "fonts/Notera_PersonalUseOnly.ttf",
-  "home.css": "css/home.css",
-  "home.css.map": "css/home.css.map",
-  "home.js": "js/home.js",
-  "home.js.map": "js/home.js.map",
-  "main.css": "css/main.css",
-  "main.css.map": "css/main.css.map",
-  "main.js": "js/main.js",
-  "main.js.map": "js/main.js.map",
-  "single.css": "css/single.css",
-  "single.css.map": "css/single.css.map",
-  "single.js": "js/single.js",
-  "single.js.map": "js/single.js.map"
+  "home.css": "css/home.f3dcf4be703c41213110.css",
+  "home.js": "js/home.c6e58ab8063c35d26a08.js",
+  "main.css": "css/main.64b62191639a13a4cd5b.css",
+  "main.js": "js/main.75d4ef64f40163050614.js",
+  "single.css": "css/single.0e4338761429b4eb16ac.css",
+  "single.js": "js/single.0588e7a204a980b9fcc0.js"
 }

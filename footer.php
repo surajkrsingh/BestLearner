@@ -3,12 +3,12 @@
  * The template for displaying the footer.
  * Contains the closing of the #content div and all content after.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
 
-	if ( wp_verify_nonce( sanitize_key( $_POST['submit_post'] ), 'bl_subscribe_nonce_action' ) ) {
+	if ( wp_verify_nonce( sanitize_key( $_POST['submit_post'] ), 'bl_subscribe_nonce_action' ) ) { //phpcs:ignore
 		$bl_subscribe_name  = sanitize_text_field( filter_input( INPUT_POST, 'bl_subscribe_name', FILTER_SANITIZE_STRING ) );
 		$bl_subscribe_email = sanitize_text_field( filter_input( INPUT_POST, 'bl_subscribe_email', FILTER_SANITIZE_EMAIL ) );
 
@@ -23,16 +23,16 @@ if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
 			);
 			$user_id  = wp_insert_user( $usermeta );
 			if ( ! is_wp_error( $user_id ) ) {
-				$error_message = 'Thank you for subscribe us !!';
-				echo "<script type='text/javascript'>alert('$error_message');</script>";
+				$error_message = esc_html__( 'Thank you for subscribe us !!', 'bestlearner' );
+				echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 			}
 		} else {
-			$error_message = esc_html__( 'Already subscribed by you', 'life-styel' );
-			echo "<script type='text/javascript'>alert('$error_message');</script>";
+			$error_message = esc_html__( 'Already subscribed by you', 'bestlearner' );
+			echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 		}
 	} else {
-		$error_message = esc_html__( 'Failed Nonce Verification ', 'life-styel' );
-		echo "<script type='text/javascript'>alert('$error_message');</script>";
+		$error_message = esc_html__( 'Failed Nonce Verification ', 'bestlearner' );
+		echo "<script type='text/javascript'>alert('$error_message');</script>"; //phpcs:ignore
 	}
 }
 
@@ -48,9 +48,6 @@ if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
 				<hr class="hr-line--green"/>
 				<span class="line-break caption-text">
 					Address : Pune Maharashtra ( India )
-				</span>
-				<span class="line-break caption-text">
-					Contact No : +917284970941
 				</span>
 				<span class="line-break caption-text">
 					Email : bestlearner.org@gmail.com
@@ -111,8 +108,9 @@ if ( isset( $_POST['bl_subscribe_submit_button'] ) ) {
 			</div>
 			<div class="footer-copy-text">© Copyright 2019. All Rights Reserved.</div>
 		</section>
+		<progress class="progress-bar" id="progressbar" value="0"></progress>
 	</footer>
-	<div class="lifestyle-back-to-top" id="lifestyle-back-to-top"></div>
+	<div class="bestlearner-back-to-top" id="bestlearner-back-to-top"></div>
 	<?php wp_footer(); ?>
 </body>
 </html>

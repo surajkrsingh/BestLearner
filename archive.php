@@ -4,7 +4,7 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();
@@ -37,7 +37,7 @@ get_header();
 
 		endif;
 
-		lifestyle_pagination();
+		bestlearner_pagination();
 		?>
 	</div >
 <?php

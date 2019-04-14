@@ -1,29 +1,29 @@
 <?php
 /**
- * This is footer widget for about me.
+ * This is footer widget for Top_Post_Contributors.
  *
  * @link  https://github.com/rtCamp/suraj-singh/tree/wp-themes
  * @since 1.0
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /**
- * Class WP_Custom_Widget_About_Me for set a particluar user info.
+ * Class Top_Post_Contributors for set a particluar user info.
  *
- * @package lifestyle
+ * @package bestlearner
  *
  * @author Suraj Singh <suraj.sk243@gmail.comgmail.com>
  */
-class WP_Custom_Widget_About_Me extends WP_Widget {
+class Top_Post_Contributors extends WP_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		parent::__construct(
-			'about-me-widget',
-			__( 'About Me Widget', 'lifestyle' ),
+			'top-post-contributors-widget',
+			__( 'Top Post Contributors', 'bestlearner' ),
 			array(
 				'customize_selective_refresh' => true,
 			)
@@ -38,30 +38,14 @@ class WP_Custom_Widget_About_Me extends WP_Widget {
 	public function form( $instance ) {
 		$defaults = array(
 			'title'  => '',
-			'select' => '',
 		);
 		?>
 
 		<!-- Title textbox -->
-		<div class="meta-options wpbp_field">
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title', 'lifestyle' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
-		</div>
-		<!--Select box for user list-->
-		<div class="meta-options wpbp_field">
-			<label for="<?php echo esc_html( $this->get_field_id( 'select' ) ); ?>"><?php esc_html_e( 'Select', 'lifestyle' ); ?></label>
-			<select name="<?php echo esc_html( $this->get_field_name( 'select' ) ); ?>" id="<?php echo esc_html( $this->get_field_id( 'select' ) ); ?>" class="widefat">
-			<?php
-			$users = get_users( array( 'fields' => array( 'display_name', 'ID' ) ) );
-
-			if ( ! is_array( $users ) || empty( $users ) ) {
-				return;
-			}
-			foreach ( $users as $user ) {
-				printf( '<option value="%1$s" id="%1$s" selected( %2$s, %1$s, $3$s )> %4$s</option>', esc_attr( $user->ID ), esc_attr( $instance['select'] ), false, esc_html( $user->display_name ) );
-			}
-			?>
-			</select>
+			<div class="meta-options wpbp_field">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title', 'bestlearner' ); ?></label>
+				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			</div>
 		</div>
 		<?php
 	}
@@ -73,12 +57,8 @@ class WP_Custom_Widget_About_Me extends WP_Widget {
 	 * @param Array $old_instance .
 	 */
 	public function update( $new_instance, $old_instance ) {
-
-		$instance = $old_instance;
-
-		$instance['title']  = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
-		$instance['select'] = isset( $new_instance['select'] ) ? wp_strip_all_tags( $new_instance['select'] ) : '';
-
+		$instance          = $old_instance;
+		$instance['title'] = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
 
@@ -92,7 +72,6 @@ class WP_Custom_Widget_About_Me extends WP_Widget {
 
 		// Check the widget options.
 		$title  = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
-		$select = isset( $instance['select'] ) ? $instance['select'] : '';
 		// Display the widget.
 		echo '<div class="footer-box">';
 

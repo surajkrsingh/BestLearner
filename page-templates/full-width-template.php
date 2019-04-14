@@ -4,7 +4,7 @@
  *
  * Used for showing full width template
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 get_header();

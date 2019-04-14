@@ -5,13 +5,13 @@
  * @link  https://github.com/rtCamp/suraj-singh/tree/wp-themes
  * @since 1.0
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
 /**
  * Class BestLearner_Info for settings.
  *
- * @package lifestyle
+ * @package bestlearner
  *
  * @author Suraj Singh <suraj.sk243@gmail.comgmail.com>
  */
@@ -76,7 +76,7 @@ class BestLearner_Info {
 	 */
 	public function bestlearner_admin_menu() {
 		add_menu_page(
-			__( 'Best-Learner Information', 'lifestyle' ),
+			__( 'Best-Learner Information', 'bestlearner' ),
 			'BestLearner',
 			'manage_options',
 			'best-learner',
@@ -89,7 +89,7 @@ class BestLearner_Info {
 	 * Create html page along with elements for bestlearner.
 	 */
 	public function bestlearner_admin_html_page() {
-		include_once LIFESTYLE_TEMP_DIR . '/inc/bestlearner-info-page.php';
+		include_once BESTLEARNER_TEMP_DIR . '/inc/bestlearner-info-page.php';
 	}
 
 }

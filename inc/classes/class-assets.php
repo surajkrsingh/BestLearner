@@ -2,10 +2,10 @@
 /**
  * Enqueue theme assets.
  *
- * @package lifestyle
+ * @package bestlearner
  */
 
-namespace Lifestyle;
+namespace BestLearner;
 
 /**
  * Class Assets
@@ -29,7 +29,7 @@ class Assets extends Base {
 			return self::$asset_paths;
 		}
 
-		$json_data   = LIFESTYLE_TEMP_DIR . '/build/manifest.json';
+		$json_data   = BESTLEARNER_TEMP_DIR . '/build/manifest.json';
 		$asset_array = file_get_contents( $json_data ); // phpcs:ignore
 
 		self::$asset_paths = ( $asset_array ) ? json_decode( $asset_array, true ) : [];
@@ -53,7 +53,7 @@ class Assets extends Base {
 		$asset_paths = self::get_asset_path();
 
 		if ( ! empty( $asset_paths[ $filename ] ) ) {
-			return sprintf( '%1$s/%2$s', LIFESTYLE_BUILD_URI, $asset_paths[ $filename ] );
+			return sprintf( '%1$s/%2$s', BESTLEARNER_BUILD_URI, $asset_paths[ $filename ] );
 		}
 
 		return false;
@@ -78,7 +78,7 @@ class Assets extends Base {
 		$asset_paths   = self::get_asset_path();
 
 		if ( ! empty( $asset_paths[ $filename ] ) ) {
-			$file_location = sprintf( '%1$s/build/%2$s', LIFESTYLE_TEMP_DIR, $asset_paths[ $filename ] );
+			$file_location = sprintf( '%1$s/build/%2$s', BESTLEARNER_TEMP_DIR, $asset_paths[ $filename ] );
 		}
 
 		return filemtime( $file_location );
@@ -91,24 +91,24 @@ class Assets extends Base {
 	 */
 	public function register_scripts() {
 
-		wp_register_script( 'lifestyle-main', self::asset_path( 'main.js' ), array( 'jquery' ), self::asset_version( 'main.js' ), true );
-		wp_register_script( 'lifestyle-home', self::asset_path( 'home.js' ), array( 'jquery' ), self::asset_version( 'home.js' ), true );
-		wp_register_script( 'lifestyle-single', self::asset_path( 'single.js' ), array( 'jquery' ), self::asset_version( 'single.js' ), true );
-		wp_register_style( 'lifestyle-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array(), self::asset_version() );
-		wp_register_style( 'lifestyle-google-font', 'https://fonts.googleapis.com/css?family=Raleway:600', array(), self::asset_version() );
-		wp_enqueue_script( 'lifestyle-main' );
-		wp_enqueue_style( 'lifestyle-font-awesome' );
-		wp_enqueue_style( 'lifestyle-google-font' );
-
+		wp_register_script( 'bestlearner-main', self::asset_path( 'main.js' ), array( 'jquery' ), self::asset_version( 'main.js' ), true );
+		wp_register_script( 'bestlearner-home', self::asset_path( 'home.js' ), array( 'jquery' ), self::asset_version( 'home.js' ), true );
+		wp_register_script( 'bestlearner-single', self::asset_path( 'single.js' ), array( 'jquery' ), self::asset_version( 'single.js' ), true );
+		wp_register_style( 'bestlearner-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array(), self::asset_version() );
+		wp_register_style( 'bestlearner-google-font', 'https://fonts.googleapis.com/css?family=Raleway:600', array(), self::asset_version() );
+		wp_enqueue_script( 'bestlearner-main' );
+		wp_enqueue_style( 'bestlearner-font-awesome' );
+		wp_enqueue_style( 'bestlearner-google-font' );
+		wp_register_script( 'google-analytics-script', 'https://www.googletagmanager.com/gtag/js?id=UA-138286791-1', null, '1.0.0', true );
 		wp_register_script( 'google-recaptch-script', 'https://www.google.com/recaptcha/api.js', null, '1.0.0', true );
 		wp_enqueue_script( 'google-recaptch-script' );
 
 		if ( is_home() ) {
-			wp_enqueue_script( 'lifestyle-home' );
+			wp_enqueue_script( 'bestlearner-home' );
 		}
 
 		if ( is_single() ) {
-			wp_enqueue_script( 'lifestyle-single' );
+			wp_enqueue_script( 'bestlearner-single' );
 		}
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -124,18 +124,18 @@ class Assets extends Base {
 	 */
 	public function register_styles() {
 
-		wp_register_style( 'lifestyle-main', self::asset_path( 'main.css' ), array(), self::asset_version( 'main.css' ) );
-		wp_register_style( 'lifestyle-home', self::asset_path( 'home.css' ), array( 'lifestyle-main' ), self::asset_version( 'home.css' ) );
-		wp_register_style( 'lifestyle-single', self::asset_path( 'single.css' ), array( 'lifestyle-main' ), self::asset_version( 'single.css' ) );
+		wp_register_style( 'bestlearner-main', self::asset_path( 'main.css' ), array(), self::asset_version( 'main.css' ) );
+		wp_register_style( 'bestlearner-home', self::asset_path( 'home.css' ), array( 'bestlearner-main' ), self::asset_version( 'home.css' ) );
+		wp_register_style( 'bestlearner-single', self::asset_path( 'single.css' ), array( 'bestlearner-main' ), self::asset_version( 'single.css' ) );
 
-		wp_enqueue_style( 'lifestyle-main' );
+		wp_enqueue_style( 'bestlearner-main' );
 
 		if ( is_home() ) {
-			wp_enqueue_style( 'lifestyle-home' );
+			wp_enqueue_style( 'bestlearner-home' );
 		}
 
 		if ( is_single() ) {
-			wp_enqueue_style( 'lifestyle-single' );
+			wp_enqueue_style( 'bestlearner-single' );
 		}
 	}
 

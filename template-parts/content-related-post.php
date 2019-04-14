@@ -24,6 +24,7 @@
 		if ( 1 >= count( $posts ) ) {
 			esc_html_e( 'Sorry no more post for this category.' );
 		} else {
+			$count = 0;
 			foreach ( $posts as $post ) { //phpcs:ignore 
 				setup_postdata( $post );
 				$new_post_id = get_the_ID();
@@ -32,9 +33,11 @@
 				}
 				$new_post_date = get_the_date();
 				$new_post_date = date( 'F d Y', strtotime( $new_post_date ) );
+				$count++;
 				?>
 				<div class="popular-post">
 					<h4>
+						<?php echo esc_html( $count . '. ' ); ?>
 						<a href="<?php echo esc_html( get_permalink( $new_post_id ) ); ?>"><?php the_title(); ?></a>
 					</h4>
 					<div class="popular-post-bg-author text text--uppercase">BY 
