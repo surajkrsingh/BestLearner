@@ -68,7 +68,19 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: ../header.php:84, ../inc/classes/class-bestlearner.php:116
+#: ../footer.php:26
+msgid "Thank you for subscribe us !!"
+msgstr ""
+
+#: ../footer.php:30
+msgid "Already subscribed by you"
+msgstr ""
+
+#: ../footer.php:34, ../template-parts/content-suggest-article.php:46
+msgid "Failed Nonce Verification "
+msgstr ""
+
+#: ../header.php:87, ../inc/classes/class-bestlearner.php:116
 msgid "Primary Menu"
 msgstr ""
 
@@ -215,10 +227,6 @@ msgstr ""
 msgid "Top Post Contributors"
 msgstr ""
 
-#: ../inc/classes/class-top-post-contributors.php:46
-msgid "Widget Title"
-msgstr ""
-
 #: ../inc/classes/class-top-visited-post.php:27
 msgid "Your site&#8217;s most visited Posts."
 msgstr ""
@@ -291,6 +299,18 @@ msgstr ""
 
 #: ../template-parts/content-page.php:36
 msgid "Edit"
+msgstr ""
+
+#: ../template-parts/content-suggest-article.php:34
+msgid "Please enter value"
+msgstr ""
+
+#: ../template-parts/content-suggest-article.php:38
+msgid "please fill captcha proper "
+msgstr ""
+
+#: ../template-parts/content-suggest-article.php:42
+msgid "Invalid Request"
 msgstr ""
 
 #. translators: %s: Name of current post.

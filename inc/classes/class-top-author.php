@@ -102,7 +102,7 @@ class Top_Author extends WP_Widget {
 					<?php
 					printf( '<a href="%3$s"><img src="%1$s" title="%2$s" alt="%2$s" class="author-item-dp"/></a>', esc_url( get_avatar_url( $current_user->ID ) ), esc_html( $current_user->display_name ), esc_url( get_author_posts_url( $current_user->ID ) ) );
 					?>
-					<span class="author-contents">
+					<span class="author-contents-sidebar">
 						<a href="<?php echo esc_url( get_author_posts_url( $current_user->ID ) ); ?>"><?php echo esc_html( $current_user->display_name ); ?></a>
 					</span>
 					<span class="float-right counter">
